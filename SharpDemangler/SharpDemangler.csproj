@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D99913BC-1B02-4F9B-8D31-21F2F3CAD6D1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SharpDemangler</RootNamespace>
+    <AssemblyName>SharpDemangler</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Itanium\AbiTagAttr.cs" />
+    <Compile Include="Itanium\AbstractManglingParser.cs" />
+    <Compile Include="Itanium\ArraySubscriptExpr.cs" />
+    <Compile Include="Itanium\ArrayType.cs" />
+    <Compile Include="Itanium\BinaryExpr.cs" />
+    <Compile Include="Itanium\BoolExpr.cs" />
+    <Compile Include="Itanium\BracedExpr.cs" />
+    <Compile Include="Itanium\BracedRangeExpr.cs" />
+    <Compile Include="Itanium\Cache.cs" />
+    <Compile Include="Itanium\CallExpr.cs" />
+    <Compile Include="Itanium\CastExpr.cs" />
+    <Compile Include="Itanium\ClosureTypeName.cs" />
+    <Compile Include="Itanium\ConditionalExpr.cs" />
+    <Compile Include="Itanium\ConversionExpr.cs" />
+    <Compile Include="Itanium\ConversionOperatorType.cs" />
+    <Compile Include="Itanium\CtorDtorName.cs" />
+    <Compile Include="Itanium\CtorVtableSpecialName.cs" />
+    <Compile Include="Itanium\DeleteExpr.cs" />
+    <Compile Include="Itanium\DotSuffix.cs" />
+    <Compile Include="Itanium\DtorName.cs" />
+    <Compile Include="Itanium\DynamicExceptionSpec.cs" />
+    <Compile Include="Itanium\ElaboratedTypeSpefType.cs" />
+    <Compile Include="Itanium\EnableIfAttr.cs" />
+    <Compile Include="Itanium\EnclosingExpr.cs" />
+    <Compile Include="Itanium\ExpandedSpecialSubstitution.cs" />
+    <Compile Include="Itanium\FloatData.cs" />
+    <Compile Include="Itanium\FloatLiteralImpl.cs" />
+    <Compile Include="Itanium\FoldExpr.cs" />
+    <Compile Include="Itanium\ForwardTemplateReference.cs" />
+    <Compile Include="Itanium\FunctionEncoding.cs" />
+    <Compile Include="Itanium\FunctionParam.cs" />
+    <Compile Include="Itanium\FunctionRefQual.cs" />
+    <Compile Include="Itanium\FunctionType.cs" />
+    <Compile Include="Itanium\GlobalQualifiedName.cs" />
+    <Compile Include="Itanium\IManglingParser.cs" />
+    <Compile Include="Itanium\InitListExpr.cs" />
+    <Compile Include="Itanium\IntegerCastExpr.cs" />
+    <Compile Include="Itanium\IntegerLiteral.cs" />
+    <Compile Include="Itanium\ItaniumPartialDemangler.cs" />
+    <Compile Include="Itanium\LiteralOperator.cs" />
+    <Compile Include="Itanium\LocalName.cs" />
+    <Compile Include="Itanium\ManglingParser.cs" />
+    <Compile Include="Itanium\MemberExpr.cs" />
+    <Compile Include="Itanium\NameState.cs" />
+    <Compile Include="Itanium\NameType.cs" />
+    <Compile Include="Itanium\NameWithTemplateArgs.cs" />
+    <Compile Include="Itanium\NestedName.cs" />
+    <Compile Include="Itanium\NewExpr.cs" />
+    <Compile Include="Itanium\Node.cs" />
+    <Compile Include="Itanium\NodeArray.cs" />
+    <Compile Include="Itanium\NodeOrString.cs" />
+    <Compile Include="Itanium\NodeType.cs" />
+    <Compile Include="Itanium\NodeArrayNode.cs" />
+    <Compile Include="Itanium\NoexceptSpec.cs" />
+    <Compile Include="Itanium\ObjCProtoName.cs" />
+    <Compile Include="Itanium\ParameterPack.cs" />
+    <Compile Include="Itanium\ParameterPackExpansion.cs" />
+    <Compile Include="Itanium\ParameterPackTracker.cs" />
+    <Compile Include="Itanium\PixelVectorType.cs" />
+    <Compile Include="Itanium\PointerToMemberType.cs" />
+    <Compile Include="Itanium\PointerType.cs" />
+    <Compile Include="Itanium\PostfixExpr.cs" />
+    <Compile Include="Itanium\PostfixQualifiedType.cs" />
+    <Compile Include="Itanium\PrefixExpr.cs" />
+    <Compile Include="Itanium\QualifiedName.cs" />
+    <Compile Include="Itanium\Qualifiers.cs" />
+    <Compile Include="Itanium\QualType.cs" />
+    <Compile Include="Itanium\ReferenceKind.cs" />
+    <Compile Include="Itanium\ReferenceType.cs" />
+    <Compile Include="Itanium\SizeofParamPackExpr.cs" />
+    <Compile Include="Itanium\SpecialName.cs" />
+    <Compile Include="Itanium\SpecialSubKind.cs" />
+    <Compile Include="Itanium\SpecialSubstitution.cs" />
+    <Compile Include="Itanium\StdQualifiedName.cs" />
+    <Compile Include="Itanium\OutputStream.cs" />
+    <Compile Include="Itanium\StructuredBindingName.cs" />
+    <Compile Include="Itanium\SwapAndRestore.cs" />
+    <Compile Include="Itanium\TemplateArgs.cs" />
+    <Compile Include="Itanium\TemplateArgumentPack.cs" />
+    <Compile Include="Itanium\ThrowExpr.cs" />
+    <Compile Include="Itanium\UnnamedTypeName.cs" />
+    <Compile Include="Itanium\VectorType.cs" />
+    <Compile Include="Itanium\VendorExtQualType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
