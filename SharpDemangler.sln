@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDemangler", "SharpDemangler\SharpDemangler.csproj", "{D99913BC-1B02-4F9B-8D31-21F2F3CAD6D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpDemanglerTests", "SharpDemanglerTests\SharpDemanglerTests.csproj", "{75EE6DB5-9AB7-481E-AB63-5E00ED506CD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D99913BC-1B02-4F9B-8D31-21F2F3CAD6D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D99913BC-1B02-4F9B-8D31-21F2F3CAD6D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D99913BC-1B02-4F9B-8D31-21F2F3CAD6D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75EE6DB5-9AB7-481E-AB63-5E00ED506CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75EE6DB5-9AB7-481E-AB63-5E00ED506CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75EE6DB5-9AB7-481E-AB63-5E00ED506CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75EE6DB5-9AB7-481E-AB63-5E00ED506CD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
