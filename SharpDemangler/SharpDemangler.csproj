@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Assert.cs" />
     <Compile Include="Common\StringView.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Itanium\AbiTagAttr.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Microsoft\CharKind.cs" />
     <Compile Include="Microsoft\ConversionOperatorIdentifierNode.cs" />
     <Compile Include="Microsoft\CustomTypeNode.cs" />
+    <Compile Include="Common\DemanglerAssertionException.cs" />
     <Compile Include="Microsoft\DynamicStructorIdentifierNode.cs" />
     <Compile Include="Microsoft\EncodedStringLiteralNode.cs" />
     <Compile Include="Microsoft\FuncClass.cs" />

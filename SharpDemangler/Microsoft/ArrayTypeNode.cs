@@ -17,7 +17,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		void OutputOneDimension(OutputStream os, OutputFlags flags, Node n) {
-			Debug.Assert(n.Kind == NodeKind.IntegerLiteral);
+			Assert.True(n.Kind == NodeKind.IntegerLiteral);
 			IntegerLiteralNode iln = (IntegerLiteralNode)n;
 			if (iln.Value != 0)
 				iln.Output(os, flags);

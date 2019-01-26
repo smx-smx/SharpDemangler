@@ -50,7 +50,7 @@ namespace SharpDemangler.Microsoft
 					os.Append("&&");
 					break;
 				default:
-					Debug.Assert(false);
+					Assert.True(false);
 					break;
 			}
 

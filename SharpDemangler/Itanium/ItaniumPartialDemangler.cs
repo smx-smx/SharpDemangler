@@ -28,7 +28,7 @@ namespace SharpDemangler.Itanium
 		}
 
 		public string FinishDemangle() {
-			Debug.Assert(RootNode != null);
+			Assert.True(RootNode != null);
 			return PrintNode(RootNode);
 		}
 
@@ -157,14 +157,14 @@ namespace SharpDemangler.Itanium
 
 		public bool IsFunction {
 			get {
-				Debug.Assert(RootNode != null);
+				Assert.True(RootNode != null);
 				return RootNode.Kind == ItaniumDemangleNodeType.FunctionEncoding;
 			}
 		}
 
 		public bool IsSpecialName {
 			get {
-				Debug.Assert(RootNode != null);
+				Assert.True(RootNode != null);
 				return RootNode.Kind == ItaniumDemangleNodeType.SpecialName || RootNode.Kind == ItaniumDemangleNodeType.CtorVtableSpecialName;
 			}
 		}
@@ -177,7 +177,7 @@ namespace SharpDemangler.Itanium
 
 		public bool HasFunctionQualifiers {
 			get {
-				Debug.Assert(RootNode != null);
+				Assert.True(RootNode != null);
 				if (!IsFunction)
 					return false;
 				FunctionEncoding e = (FunctionEncoding)RootNode;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpDemangler.Common;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -49,7 +50,7 @@ namespace SharpDemangler.Itanium
 		}
 
 		NodeArray PopTrailingNodeArray(int fromPosition) {
-			Debug.Assert(fromPosition <= names.Count);
+			Assert.True(fromPosition <= names.Count);
 			NodeArray res = MakeNodeArray(names.Skip(fromPosition));
 			names.RemoveRange(fromPosition, names.Count - fromPosition);
 			return res;
@@ -842,7 +843,7 @@ namespace SharpDemangler.Itanium
 				}
 			}
 
-			Debug.Assert(soFar != null);
+			Assert.True(soFar != null);
 
 			baseNode = parser.ParseBaseUnresolvedName();
 			if (baseNode == null)
@@ -2375,7 +2376,7 @@ namespace SharpDemangler.Itanium
 				Node forwardRef = new ForwardTemplateReference(index);
 				if (forwardRef == null)
 					return null;
-				Debug.Assert(forwardRef.Kind == ItaniumDemangleNodeType.ForwardTemplateReference);
+				Assert.True(forwardRef.Kind == ItaniumDemangleNodeType.ForwardTemplateReference);
 				ForwardTemplateRefs.Add((ForwardTemplateReference)forwardRef);
 				return forwardRef;
 			}

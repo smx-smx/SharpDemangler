@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharpDemangler.Common;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -26,12 +27,12 @@ namespace SharpDemangler.Itanium
 		}
 
 		public string AsString() {
-			Debug.Assert(IsString);
+			Assert.True(IsString);
 			return StringValue;
 		}
 
 		public Node AsNode() {
-			Debug.Assert(IsNode);
+			Assert.True(IsNode);
 			return NodeValue;
 		}
 	}

@@ -37,7 +37,7 @@ namespace SharpDemangler.Microsoft
 			}
 
 			if (StartsWithDigit(mangledName)) {
-				Debug.Assert(mangledName[0] == '6' || mangledName[0] == '8');
+				Assert.True(mangledName[0] == '6' || mangledName[0] == '8');
 				return mangledName[0] == '8';
 			}
 
@@ -45,7 +45,7 @@ namespace SharpDemangler.Microsoft
 			mangledName.ConsumeFront('I');
 			mangledName.ConsumeFront('F');
 
-			Debug.Assert(!mangledName.IsEmpty);
+			Assert.True(!mangledName.IsEmpty);
 
 			switch (mangledName.First()) {
 				case 'A':
@@ -193,7 +193,7 @@ namespace SharpDemangler.Microsoft
 				case 'S':
 					return (Qualifiers.Const | Qualifiers.Volatile, PointerAffinity.Pointer);
 				default:
-					Debug.Assert(false); //Ty is not a pointer type
+					Assert.True(false); //Ty is not a pointer type
 					break;
 			}
 
@@ -218,7 +218,7 @@ namespace SharpDemangler.Microsoft
 					return null;
 				}
 
-				Debug.Assert(!error);
+				Assert.True(!error);
 				IdentifierNode elem = DemangleNameScopePiece(ref mangledName);
 				if (error)
 					return null;
@@ -420,12 +420,12 @@ namespace SharpDemangler.Microsoft
 				case FunctionIdentifierCodeGroup.DoubleUnder:
 					return doubleUnder[index];
 			}
-			Debug.Assert(false);
+			Assert.True(false);
 			return IntrinsicFunctionKind.None;
 		}
 
 		IdentifierNode DemangleFunctionIdentifierCode(ref StringView mangledName) {
-			Debug.Assert(mangledName.StartsWith('?'));
+			Assert.True(mangledName.StartsWith('?'));
 			mangledName = mangledName.DropFront();
 
 			if (mangledName.ConsumeFront("__"))
@@ -446,7 +446,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		IdentifierNode DemangleTemplateInstantiationName(ref StringView mangledName, NameBackrefBehaviour nbb) {
-			Debug.Assert(mangledName.StartsWith("?$"));
+			Assert.True(mangledName.StartsWith("?$"));
 			mangledName.ConsumeFront("?$");
 
 			BackrefContext outerContext = new BackrefContext();
@@ -596,7 +596,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		NameIdentifierNode DemangleAnonymousNamespaceName(ref StringView mangledName) {
-			Debug.Assert(mangledName.StartsWith("?A"));
+			Assert.True(mangledName.StartsWith("?A"));
 			mangledName.ConsumeFront("?A");
 
 			NameIdentifierNode node = new NameIdentifierNode();
@@ -795,7 +795,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		static void WriteHexDigit(ref char buffer, byte digit) {
-			Debug.Assert(digit <= 15);
+			Assert.True(digit <= 15);
 			buffer = (char)((digit < 10) ? ('0' + digit) : ('a' + digit - 10));
 		}
 
@@ -816,7 +816,7 @@ namespace SharpDemangler.Microsoft
 				}
 				tempBuffer[pos--] = 'x';
 				tempBuffer[pos--] = '\\';
-				Debug.Assert(pos >= 0);
+				Assert.True(pos >= 0);
 			}
 			os.Append(new StringView(tempBuffer).ToString());
 		}
@@ -841,7 +841,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		int GuessCharByteSize(byte[] stringBytes, int numChars, int numBytes) {
-			Debug.Assert(numBytes > 0);
+			Assert.True(numBytes > 0);
 			if (numBytes % 2 == 1)
 				return 1;
 
@@ -867,7 +867,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		byte RebasedHexDigitToNumber(char c) {
-			Debug.Assert(IsRebasedHexDigit(c));
+			Assert.True(IsRebasedHexDigit(c));
 			return (byte)((c <= 'J') ? (c - 'A') : (10 + c - 'K'));
 		}
 
@@ -992,7 +992,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		uint DecodeMultiByteChar(byte[] stringBytes, int charIndex, int charBytes) {
-			Debug.Assert(charBytes == 1 || charBytes == 2 || charBytes == 4);
+			Assert.True(charBytes == 1 || charBytes == 2 || charBytes == 4);
 			int offset = charIndex * charBytes;
 			uint result = 0;
 
@@ -1050,7 +1050,7 @@ namespace SharpDemangler.Microsoft
 					result.IsTruncated = true;
 
 				while (!mangledName.ConsumeFront('@')) {
-					Debug.Assert(stringByteSize >= 2);
+					Assert.True(stringByteSize >= 2);
 
 					char w = DemangleWcharLiteral(ref mangledName);
 					if (stringByteSize != 2 || result.IsTruncated) {
@@ -1066,7 +1066,7 @@ namespace SharpDemangler.Microsoft
 
 				int bytesDecoded = 0;
 				while (!mangledName.ConsumeFront('@')) {
-					Debug.Assert(stringByteSize >= 1);
+					Assert.True(stringByteSize >= 1);
 					stringBytes[bytesDecoded++] = Convert.ToByte(DemangleCharLiteral(ref mangledName));
 				}
 
@@ -1074,7 +1074,7 @@ namespace SharpDemangler.Microsoft
 					result.IsTruncated = true;
 
 				int charBytes = GuessCharByteSize(stringBytes, bytesDecoded, stringByteSize);
-				Debug.Assert(stringByteSize % charBytes == 0);
+				Assert.True(stringByteSize % charBytes == 0);
 				switch (charBytes) {
 					case 1:
 						result.Char = CharKind.Char;
@@ -1086,7 +1086,7 @@ namespace SharpDemangler.Microsoft
 						result.Char = CharKind.Char32;
 						break;
 					default:
-						Debug.Assert(false);
+						Assert.True(false);
 						break;
 				}
 
@@ -1208,11 +1208,11 @@ namespace SharpDemangler.Microsoft
 
 			if (identifier.Kind == NodeKind.StructorIdentifier) {
 				StructorIdentifierNode sin = (StructorIdentifierNode)identifier;
-				Debug.Assert(qn.Components.Count() >= 2);
+				Assert.True(qn.Components.Count() >= 2);
 				Node classNode = qn.Components.Nodes[qn.Components.Count() - 2];
 				sin.Class = (IdentifierNode)classNode;
 			}
-			Debug.Assert(qn != null);
+			Assert.True(qn != null);
 			return qn;
 		}
 
@@ -1362,17 +1362,17 @@ namespace SharpDemangler.Microsoft
 		}
 
 		NamedIdentifierNode DemangleLocallyScopedNamePiece(ref StringView mangledName) {
-			Debug.Assert(StartsWithLocalScopePattern(ref mangledName));
+			Assert.True(StartsWithLocalScopePattern(ref mangledName));
 
 			NamedIdentifierNode identifier = new NamedIdentifierNode();
 			mangledName.ConsumeFront('?');
 
 			var number = DemangleNumber(ref mangledName);
-			Debug.Assert(!number.Item2);
+			Assert.True(!number.Item2);
 
 			mangledName.ConsumeFront('?');
 
-			Debug.Assert(!error);
+			Assert.True(!error);
 			Node scope = Parse(mangledName);
 			if (error)
 				return null;
@@ -1522,7 +1522,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		StorageClass DemangleVariableStorageClass(ref StringView mangledName) {
-			Debug.Assert(char.IsDigit(mangledName.First()));
+			Assert.True(char.IsDigit(mangledName.First()));
 
 			switch (mangledName.PopFront()) {
 				case '0':
@@ -1589,7 +1589,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		ArrayTypeNode DemangleArrayType(ref StringView mangledName) {
-			Debug.Assert(mangledName.First() == 'Y');
+			Assert.True(mangledName.First() == 'Y');
 			mangledName.PopFront();
 
 			ulong rank = 0;
@@ -1632,7 +1632,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		CustomTypeNode DemangleCustomType(ref StringView mangledName) {
-			Debug.Assert(mangledName.StartsWith('?'));
+			Assert.True(mangledName.StartsWith('?'));
 			mangledName.PopFront();
 
 			CustomTypeNode ctn = new CustomTypeNode();
@@ -1673,7 +1673,7 @@ namespace SharpDemangler.Microsoft
 				if (mangledName.ConsumeFront("$$A8@@"))
 					ty = DemangleFunctionType(ref mangledName, true);
 				else {
-					Debug.Assert(mangledName.StartsWith("$$A6"));
+					Assert.True(mangledName.StartsWith("$$A6"));
 					mangledName.ConsumeFront("$$A6");
 					ty = DemangleFunctionType(ref mangledName, false);
 				}
@@ -1768,7 +1768,7 @@ namespace SharpDemangler.Microsoft
 					tt = new TagTypeNode(TagKind.Enum);
 					break;
 				default:
-					Debug.Assert(false);
+					Assert.True(false);
 					break;
 			}
 
@@ -1823,7 +1823,7 @@ namespace SharpDemangler.Microsoft
 				current.Node = tn;
 
 				int charsConsumed = oldSize - mangledName.Length;
-				Debug.Assert(charsConsumed != 0);
+				Assert.True(charsConsumed != 0);
 
 				if (backrefs.FunctionParamCount <= 9 && charsConsumed > 1)
 					backrefs.FunctionParams[backrefs.FunctionParamCount++] = tn;
@@ -1892,7 +1892,7 @@ namespace SharpDemangler.Microsoft
 		PointerTypeNode DemangleMemberPointerType(StringView mangledName) {
 			PointerTypeNode pointer = new PointerTypeNode();
 			(pointer.Quals, pointer.Affinity) = DemanglePointerCVQualifiers(ref mangledName);
-			Debug.Assert(pointer.Affinity == PointerAffinity.Pointer);
+			Assert.True(pointer.Affinity == PointerAffinity.Pointer);
 
 			Qualifiers extQuals = DemanglePointerExtQualifiers(ref mangledName);
 			pointer.Quals = pointer.Quals | extQuals;
@@ -1904,7 +1904,7 @@ namespace SharpDemangler.Microsoft
 				Qualifiers pointeeQuals = Qualifiers.None;
 				bool isMember = false;
 				(pointeeQuals, isMember) = DemangleQualifiers(ref mangledName);
-				Debug.Assert(isMember);
+				Assert.True(isMember);
 				pointer.ClassParent = DemangleFullyQualifiedTypeName(ref mangledName);
 
 				pointer.Pointee = DemangleType(ref mangledName, QualifierMangleNode.Drop);
@@ -1917,13 +1917,13 @@ namespace SharpDemangler.Microsoft
 			IdentifierNode identifier = DemangleUnqualifiedTypeName(ref mangledName, true);
 			if (error)
 				return null;
-			Debug.Assert(identifier != null);
+			Assert.True(identifier != null);
 
 			QualifiedNameNode qn = DemangleNameScopeChain(ref mangledName, identifier);
 			if (error)
 				return null;
 
-			Debug.Assert(qn != null);
+			Assert.True(qn != null);
 			return qn;
 		}
 
@@ -1939,7 +1939,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		NamedIdentifierNode DemangleBackRefName(ref StringView mangledName) {
-			Debug.Assert(StartsWithDigit(mangledName));
+			Assert.True(StartsWithDigit(mangledName));
 
 			int i = mangledName[0] - '0';
 			if (i >= backrefs.NamesCount) {
@@ -1967,7 +1967,7 @@ namespace SharpDemangler.Microsoft
 					ni.Name = "`RTTI Complete Object Locator'";
 					break;
 				default:
-					Debug.Assert(false);
+					Assert.True(false);
 					break;
 			}
 			QualifiedNameNode qn = DemangleNameScopeChain(ref mangledName, ni);
