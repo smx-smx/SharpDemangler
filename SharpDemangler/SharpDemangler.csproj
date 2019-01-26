@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,7 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\StringView.cs" />
+    <Compile Include="Common\Utils.cs" />
     <Compile Include="Itanium\AbiTagAttr.cs" />
     <Compile Include="Itanium\AbstractManglingParser.cs" />
     <Compile Include="Itanium\ArraySubscriptExpr.cs" />
@@ -102,7 +104,7 @@
     <Compile Include="Itanium\ObjCProtoName.cs" />
     <Compile Include="Itanium\ParameterPack.cs" />
     <Compile Include="Itanium\ParameterPackExpansion.cs" />
-    <Compile Include="Itanium\ParameterPackTracker.cs" />
+    <Compile Include="Common\ParameterPackTracker.cs" />
     <Compile Include="Itanium\PixelVectorType.cs" />
     <Compile Include="Itanium\PointerToMemberType.cs" />
     <Compile Include="Itanium\PointerType.cs" />
@@ -119,7 +121,7 @@
     <Compile Include="Itanium\SpecialSubKind.cs" />
     <Compile Include="Itanium\SpecialSubstitution.cs" />
     <Compile Include="Itanium\StdQualifiedName.cs" />
-    <Compile Include="Itanium\OutputStream.cs" />
+    <Compile Include="Common\OutputStream.cs" />
     <Compile Include="Itanium\StructuredBindingName.cs" />
     <Compile Include="Itanium\SwapAndRestore.cs" />
     <Compile Include="Itanium\TemplateArgs.cs" />
@@ -128,6 +130,55 @@
     <Compile Include="Itanium\UnnamedTypeName.cs" />
     <Compile Include="Itanium\VectorType.cs" />
     <Compile Include="Itanium\VendorExtQualType.cs" />
+    <Compile Include="Microsoft\ArrayTypeNode.cs" />
+    <Compile Include="Microsoft\BackrefContext.cs" />
+    <Compile Include="Microsoft\CallingConv.cs" />
+    <Compile Include="Microsoft\CharKind.cs" />
+    <Compile Include="Microsoft\ConversionOperatorIdentifierNode.cs" />
+    <Compile Include="Microsoft\CustomTypeNode.cs" />
+    <Compile Include="Microsoft\DynamicStructorIdentifierNode.cs" />
+    <Compile Include="Microsoft\EncodedStringLiteralNode.cs" />
+    <Compile Include="Microsoft\FuncClass.cs" />
+    <Compile Include="Microsoft\FunctionIdentifierCodeGroup.cs" />
+    <Compile Include="Microsoft\FunctionRefQualifier.cs" />
+    <Compile Include="Microsoft\FunctionSignatureNode.cs" />
+    <Compile Include="Microsoft\FunctionSymbolNode.cs" />
+    <Compile Include="Microsoft\IdentifierNode.cs" />
+    <Compile Include="Microsoft\IntegerLiteralNode.cs" />
+    <Compile Include="Microsoft\IntrinsicFunctionIdentifierNode.cs" />
+    <Compile Include="Microsoft\IntrinsicFunctionKind.cs" />
+    <Compile Include="Microsoft\LiteralOperatorIdentifierNode.cs" />
+    <Compile Include="Microsoft\LocalStaticGuardIdentifierNode.cs" />
+    <Compile Include="Microsoft\LocalStaticGuardVariableNode.cs" />
+    <Compile Include="Microsoft\MicrosoftDemangler.cs" />
+    <Compile Include="Microsoft\NameBackrefBehaviour.cs" />
+    <Compile Include="Microsoft\NamedIdentifierNode.cs" />
+    <Compile Include="Microsoft\NameIdentifierNode.cs" />
+    <Compile Include="Microsoft\Node.cs" />
+    <Compile Include="Microsoft\NodeArrayNode.cs" />
+    <Compile Include="Microsoft\NodeKind.cs" />
+    <Compile Include="Microsoft\NodeList.cs" />
+    <Compile Include="Microsoft\OutputFlags.cs" />
+    <Compile Include="Microsoft\PointerAffinity.cs" />
+    <Compile Include="Microsoft\PointerTypeNode.cs" />
+    <Compile Include="Microsoft\PrimitiveKind.cs" />
+    <Compile Include="Microsoft\PrimitiveTypeNode.cs" />
+    <Compile Include="Microsoft\QualifiedNameNode.cs" />
+    <Compile Include="Microsoft\QualifierMangleNode.cs" />
+    <Compile Include="Microsoft\Qualifiers.cs" />
+    <Compile Include="Microsoft\RttiBaseClassDescriptorNode.cs" />
+    <Compile Include="Microsoft\SpecialIntrinsicKind.cs" />
+    <Compile Include="Microsoft\SpecialTableSymbolNode.cs" />
+    <Compile Include="Microsoft\StorageClass.cs" />
+    <Compile Include="Microsoft\StructorIdentifierNode.cs" />
+    <Compile Include="Microsoft\SymbolNode.cs" />
+    <Compile Include="Microsoft\TagKind.cs" />
+    <Compile Include="Microsoft\TagTypeNode.cs" />
+    <Compile Include="Microsoft\TemplateParameterReferenceNode.cs" />
+    <Compile Include="Microsoft\ThunkSignatureNode.cs" />
+    <Compile Include="Microsoft\TypeNode.cs" />
+    <Compile Include="Microsoft\VariableSymbolNode.cs" />
+    <Compile Include="Microsoft\VcallThunkIdentifierNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

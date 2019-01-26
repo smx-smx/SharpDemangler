@@ -1,4 +1,6 @@
-﻿namespace SharpDemangler.Itanium
+﻿using SharpDemangler.Common;
+
+namespace SharpDemangler.Itanium
 {
 	internal class ParameterPackExpansion : Node
 	{

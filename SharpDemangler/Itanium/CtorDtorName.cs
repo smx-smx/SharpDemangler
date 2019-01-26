@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using SharpDemangler.Common;
+using System.Text;
 
 namespace SharpDemangler.Itanium
 {

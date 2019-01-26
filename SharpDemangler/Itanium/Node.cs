@@ -1,4 +1,5 @@
-﻿using SharpDemangler.Itanium;
+﻿using SharpDemangler.Common;
+using SharpDemangler.Itanium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
