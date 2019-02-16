@@ -518,7 +518,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void BackReference12() {
-			AssertMangling("?mbb@S@@QAEX_N0@Z", "void __thiscall S::mbb(bool, bool)");
+			AssertMangling("?mbb@S@@QAEX_N0@Z", "public: void __thiscall S::mbb(bool, bool)");
 		}
 		[Test]
 		public void BackReference13() {
@@ -538,7 +538,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void BackReference17() {
-			AssertMangling("??$?HH@S@@QEAAAEAU0@H@Z", "struct S & __cdecl S::operator+<int>(int)");
+			AssertMangling("??$?HH@S@@QEAAAEAU0@H@Z", "public: struct S & __cdecl S::operator+<int>(int)");
 		}
 		[Test]
 		public void BackReference18() {
@@ -606,7 +606,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void BackReference34() {
-			AssertMangling("?foo@L@PR13207@@QAEXV?$I@VA@PR13207@@@2@@Z", "void __thiscall PR13207::L::foo(class PR13207::I<class PR13207::A>)");
+			AssertMangling("?foo@L@PR13207@@QAEXV?$I@VA@PR13207@@@2@@Z", "public: void __thiscall PR13207::L::foo(class PR13207::I<class PR13207::A>)");
 		}
 		[Test]
 		public void BackReference35() {
@@ -1000,67 +1000,67 @@ namespace SharpDemanglerTests
 		#region ConversionOperators
 		[Test]
 		public void ConversionOperator1() {
-			AssertMangling("??$?BH@TemplateOps@@QAEHXZ", "int __thiscall TemplateOps::operator<int> int(void)");
+			AssertMangling("??$?BH@TemplateOps@@QAEHXZ", "public: int __thiscall TemplateOps::operator<int> int(void)");
 		}
 		[Test]
 		public void ConversionOperator2() {
-			AssertMangling("??BOps@@QAEHXZ", "int __thiscall Ops::operator int(void)");
+			AssertMangling("??BOps@@QAEHXZ", "public: int __thiscall Ops::operator int(void)");
 		}
 		[Test]
 		public void ConversionOperator3() {
-			AssertMangling("??BConstOps@@QAE?BHXZ", "int const __thiscall ConstOps::operator int const(void)");
+			AssertMangling("??BConstOps@@QAE?BHXZ", "public: int const __thiscall ConstOps::operator int const(void)");
 		}
 		[Test]
 		public void ConversionOperator4() {
-			AssertMangling("??BVolatileOps@@QAE?CHXZ", "int volatile __thiscall VolatileOps::operator int volatile(void)");
+			AssertMangling("??BVolatileOps@@QAE?CHXZ", "public: int volatile __thiscall VolatileOps::operator int volatile(void)");
 		}
 		[Test]
 		public void ConversionOperator5() {
-			AssertMangling("??BConstVolatileOps@@QAE?DHXZ", "int const volatile __thiscall ConstVolatileOps::operator int const volatile(void)");
+			AssertMangling("??BConstVolatileOps@@QAE?DHXZ", "public: int const volatile __thiscall ConstVolatileOps::operator int const volatile(void)");
 		}
 		[Test]
 		public void ConversionOperator6() {
-			AssertMangling("??$?BN@TemplateOps@@QAENXZ", "double __thiscall TemplateOps::operator<double> double(void)");
+			AssertMangling("??$?BN@TemplateOps@@QAENXZ", "public: double __thiscall TemplateOps::operator<double> double(void)");
 		}
 		[Test]
 		public void ConversionOperator7() {
-			AssertMangling("??BOps@@QAENXZ", "double __thiscall Ops::operator double(void)");
+			AssertMangling("??BOps@@QAENXZ", "public: double __thiscall Ops::operator double(void)");
 		}
 		[Test]
 		public void ConversionOperator8() {
-			AssertMangling("??BConstOps@@QAE?BNXZ", "double const __thiscall ConstOps::operator double const(void)");
+			AssertMangling("??BConstOps@@QAE?BNXZ", "public: double const __thiscall ConstOps::operator double const(void)");
 		}
 		[Test]
 		public void ConversionOperator9() {
-			AssertMangling("??BVolatileOps@@QAE?CNXZ", "double volatile __thiscall VolatileOps::operator double volatile(void)");
+			AssertMangling("??BVolatileOps@@QAE?CNXZ", "public: double volatile __thiscall VolatileOps::operator double volatile(void)");
 		}
 		[Test]
 		public void ConversionOperator10() {
-			AssertMangling("??BConstVolatileOps@@QAE?DNXZ", "double const volatile __thiscall ConstVolatileOps::operator double const volatile(void)");
+			AssertMangling("??BConstVolatileOps@@QAE?DNXZ", "public: double const volatile __thiscall ConstVolatileOps::operator double const volatile(void)");
 		}
 		[Test]
 		public void ConversionOperator11() {
-			AssertMangling("??BCompoundTypeOps@@QAEPAHXZ", "nt * __thiscall CompoundTypeOps::operator int *(void)");
+			AssertMangling("??BCompoundTypeOps@@QAEPAHXZ", "public: int * __thiscall CompoundTypeOps::operator int *(void)");
 		}
 		[Test]
 		public void ConversionOperator12() {
-			AssertMangling("??BCompoundTypeOps@@QAEPBHXZ", "int const * __thiscall CompoundTypeOps::operator int const *(void)");
+			AssertMangling("??BCompoundTypeOps@@QAEPBHXZ", "public: int const * __thiscall CompoundTypeOps::operator int const *(void)");
 		}
 		[Test]
 		public void ConversionOperator13() {
-			AssertMangling("??BCompoundTypeOps@@QAE$$QAHXZ", "int && __thiscall CompoundTypeOps::operator int &&(void)");
+			AssertMangling("??BCompoundTypeOps@@QAE$$QAHXZ", "public: int && __thiscall CompoundTypeOps::operator int &&(void)");
 		}
 		[Test]
 		public void ConversionOperator14() {
-			AssertMangling("??BCompoundTypeOps@@QAE?AU?$Foo@H@@XZ", "struct Foo<int> __thiscall CompoundTypeOps::operator struct Foo<int>(void)");
+			AssertMangling("??BCompoundTypeOps@@QAE?AU?$Foo@H@@XZ", "public: struct Foo<int> __thiscall CompoundTypeOps::operator struct Foo<int>(void)");
 		}
 		[Test]
 		public void ConversionOperator15() {
-			AssertMangling("??$?BH@CompoundTypeOps@@QAE?AU?$Bar@U?$Foo@H@@@@XZ", "struct Bar<struct Foo<int>> __thiscall CompoundTypeOps::operator<int> struct Bar<struct Foo<int>>(void)");
+			AssertMangling("??$?BH@CompoundTypeOps@@QAE?AU?$Bar@U?$Foo@H@@@@XZ", "public: struct Bar<struct Foo<int>> __thiscall CompoundTypeOps::operator<int> struct Bar<struct Foo<int>>(void)");
 		}
 		[Test]
 		public void ConversionOperator16() {
-			AssertMangling("??$?BPAH@TemplateOps@@QAEPAHXZ", "int * __thiscall TemplateOps::operator<int *> int *(void)");
+			AssertMangling("??$?BPAH@TemplateOps@@QAEPAHXZ", "public: int * __thiscall TemplateOps::operator<int *> int *(void)");
 		}
 		#endregion
 
@@ -1155,11 +1155,11 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Cxx11_23() {
-			AssertMangling("?foo@A@PR19361@@QIGAEXXZ", "void __thiscall PR19361::A::foo(void) __restrict &");
+			AssertMangling("?foo@A@PR19361@@QIGAEXXZ", "public: void __thiscall PR19361::A::foo(void) __restrict &");
 		}
 		[Test]
 		public void Cxx11_24() {
-			AssertMangling("?foo@A@PR19361@@QIHAEXXZ", "void __thiscall PR19361::A::foo(void) __restrict &&");
+			AssertMangling("?foo@A@PR19361@@QIHAEXXZ", "public: void __thiscall PR19361::A::foo(void) __restrict &&");
 		}
 		[Test]
 		public void Cxx11_25() {
@@ -1239,15 +1239,15 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Cxx11_44() {
-			AssertMangling("?unaligned_foo8@unaligned_foo8_S@@QFCEXXZ", "void __thiscall unaligned_foo8_S::unaligned_foo8(void) volatile __unaligned");
+			AssertMangling("?unaligned_foo8@unaligned_foo8_S@@QFCEXXZ", "public: void __thiscall unaligned_foo8_S::unaligned_foo8(void) volatile __unaligned");
 		}
 		[Test]
 		public void Cxx11_45() {
-			AssertMangling("??R<lambda_1>@x@A@PR31197@@QBE@XZ", "__thiscall PR31197::A::x::<lambda_1>::operator()(void) const");
+			AssertMangling("??R<lambda_1>@x@A@PR31197@@QBE@XZ", "public: __thiscall PR31197::A::x::<lambda_1>::operator()(void) const");
 		}
 		[Test]
 		public void Cxx11_46() {
-			AssertMangling("?white@?1???R<lambda_1>@x@A@PR31197@@QBE@XZ@4HA", "int `public: __thiscall PR31197::A::x::<lambda_1>::operator()(void) const'::`2'::white");
+			AssertMangling("?white@?1???R<lambda_1>@x@A@PR31197@@QBE@XZ@4HA", "public: int `public: __thiscall PR31197::A::x::<lambda_1>::operator()(void) const'::`2'::white");
 		}
 		[Test]
 		public void Cxx11_47() {
@@ -1270,7 +1270,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Cxx14_4() {
-			AssertMangling("??R<lambda_0>@@QBE?A?<auto>@@XZ", "<auto> __thiscall <lambda_0>::operator()(void) const");
+			AssertMangling("??R<lambda_0>@@QBE?A?<auto>@@XZ", "public: <auto> __thiscall <lambda_0>::operator()(void) const");
 		}
 		[Test]
 		public void Cxx14_5() {
@@ -1333,43 +1333,43 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle8() {
-			AssertMangling("?e@foo@@1JC", "static long volatile foo::e");
+			AssertMangling("?e@foo@@1JC", "protected: static long volatile foo::e");
 		}
 		[Test]
 		public void Mangle9() {
-			AssertMangling("?f@foo@@2DD", "static char const volatile foo::f");
+			AssertMangling("?f@foo@@2DD", "public: static char const volatile foo::f");
 		}
 		[Test]
 		public void Mangle10() {
-			AssertMangling("??0foo@@QAE@XZ", "__thiscall foo::foo(void)");
+			AssertMangling("??0foo@@QAE@XZ", "public: __thiscall foo::foo(void)");
 		}
 		[Test]
 		public void Mangle11() {
-			AssertMangling("??0foo@@QEAA@XZ", "__cdecl foo::foo(void)");
+			AssertMangling("??0foo@@QEAA@XZ", "public: __cdecl foo::foo(void)");
 		}
 		[Test]
 		public void Mangle12() {
-			AssertMangling("??1foo@@QAE@XZ", "__thiscall foo::~foo(void)");
+			AssertMangling("??1foo@@QAE@XZ", "public: __thiscall foo::~foo(void)");
 		}
 		[Test]
 		public void Mangle13() {
-			AssertMangling("??1foo@@QEAA@XZ", "__cdecl foo::~foo(void)");
+			AssertMangling("??1foo@@QEAA@XZ", "public: __cdecl foo::~foo(void)");
 		}
 		[Test]
 		public void Mangle14() {
-			AssertMangling("??0foo@@QAE@H@Z", "__thiscall foo::foo(int)");
+			AssertMangling("??0foo@@QAE@H@Z", "public: __thiscall foo::foo(int)");
 		}
 		[Test]
 		public void Mangle15() {
-			AssertMangling("??0foo@@QEAA@H@Z", "__cdecl foo::foo(int)");
+			AssertMangling("??0foo@@QEAA@H@Z", "public: __cdecl foo::foo(int)");
 		}
 		[Test]
 		public void Mangle16() {
-			AssertMangling("??0foo@@QAE@PAD@Z", "__thiscall foo::foo(char *)");
+			AssertMangling("??0foo@@QAE@PAD@Z", "public: __thiscall foo::foo(char *)");
 		}
 		[Test]
 		public void Mangle17() {
-			AssertMangling("??0foo@@QEAA@PEAD@Z", "__cdecl foo::foo(char *)");
+			AssertMangling("??0foo@@QEAA@PEAD@Z", "public: __cdecl foo::foo(char *)");
 		}
 		[Test]
 		public void Mangle18() {
@@ -1381,15 +1381,15 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle20() {
-			AssertMangling("??Hfoo@@QAEHH@Z", "int __thiscall foo::operator+(int)");
+			AssertMangling("??Hfoo@@QAEHH@Z", "public: int __thiscall foo::operator+(int)");
 		}
 		[Test]
 		public void Mangle21() {
-			AssertMangling("??Hfoo@@QEAAHH@Z", "int __cdecl foo::operator+(int)");
+			AssertMangling("??Hfoo@@QEAAHH@Z", "public: int __cdecl foo::operator+(int)");
 		}
 		[Test]
 		public void Mangle22() {
-			AssertMangling("??$?HH@S@@QEAAAEANH@Z", "double & __cdecl S::operator+<int>(int)");
+			AssertMangling("??$?HH@S@@QEAAAEANH@Z", "public: double & __cdecl S::operator+<int>(int)");
 		}
 		[Test]
 		public void Mangle23() {
@@ -1397,11 +1397,11 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle24() {
-			AssertMangling("?static_method@foo@@SAPEAV1@XZ", "static class foo * __cdecl foo::static_method(void)");
+			AssertMangling("?static_method@foo@@SAPEAV1@XZ", "public: static class foo * __cdecl foo::static_method(void)");
 		}
 		[Test]
 		public void Mangle25() {
-			AssertMangling("?g@bar@@2HA", "static int bar::g");
+			AssertMangling("?g@bar@@2HA", "public: static int bar::g");
 		}
 		[Test]
 		public void Mangle26() {
@@ -1661,19 +1661,19 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle90() {
-			AssertMangling("??2OverloadedNewDelete@@SAPAXI@Z", "static void * __cdecl OverloadedNewDelete::operator new(unsigned int)");
+			AssertMangling("??2OverloadedNewDelete@@SAPAXI@Z", "public: static void * __cdecl OverloadedNewDelete::operator new(unsigned int)");
 		}
 		[Test]
 		public void Mangle91() {
-			AssertMangling("??_UOverloadedNewDelete@@SAPAXI@Z", "static void * __cdecl OverloadedNewDelete::operator new[](unsigned int)");
+			AssertMangling("??_UOverloadedNewDelete@@SAPAXI@Z", "public: static void * __cdecl OverloadedNewDelete::operator new[](unsigned int)");
 		}
 		[Test]
 		public void Mangle92() {
-			AssertMangling("??3OverloadedNewDelete@@SAXPAX@Z", "static void __cdecl OverloadedNewDelete::operator delete(void *)");
+			AssertMangling("??3OverloadedNewDelete@@SAXPAX@Z", "public: static void __cdecl OverloadedNewDelete::operator delete(void *)");
 		}
 		[Test]
 		public void Mangle93() {
-			AssertMangling("??_VOverloadedNewDelete@@SAXPAX@Z", "static void __cdecl OverloadedNewDelete::operator delete[](void *)");
+			AssertMangling("??_VOverloadedNewDelete@@SAXPAX@Z", "public: static void __cdecl OverloadedNewDelete::operator delete[](void *)");
 		}
 		[Test]
 		public void Mangle94() {
@@ -1681,39 +1681,39 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle95() {
-			AssertMangling("??2OverloadedNewDelete@@SAPEAX_K@Z", "static void * __cdecl OverloadedNewDelete::operator new(unsigned __int64)");
+			AssertMangling("??2OverloadedNewDelete@@SAPEAX_K@Z", "public: static void * __cdecl OverloadedNewDelete::operator new(unsigned __int64)");
 		}
 		[Test]
 		public void Mangle96() {
-			AssertMangling("??_UOverloadedNewDelete@@SAPEAX_K@Z", "static void * __cdecl OverloadedNewDelete::operator new[](unsigned __int64)");
+			AssertMangling("??_UOverloadedNewDelete@@SAPEAX_K@Z", "public: static void * __cdecl OverloadedNewDelete::operator new[](unsigned __int64)");
 		}
 		[Test]
 		public void Mangle97() {
-			AssertMangling("??3OverloadedNewDelete@@SAXPEAX@Z", "static void __cdecl OverloadedNewDelete::operator delete(void *)");
+			AssertMangling("??3OverloadedNewDelete@@SAXPEAX@Z", "public: static void __cdecl OverloadedNewDelete::operator delete(void *)");
 		}
 		[Test]
 		public void Mangle98() {
-			AssertMangling("??_VOverloadedNewDelete@@SAXPEAX@Z", "static void __cdecl OverloadedNewDelete::operator delete[](void *)");
+			AssertMangling("??_VOverloadedNewDelete@@SAXPEAX@Z", "public: static void __cdecl OverloadedNewDelete::operator delete[](void *)");
 		}
 		[Test]
 		public void Mangle99() {
-			AssertMangling("??HOverloadedNewDelete@@QEAAHH@Z", "int __cdecl OverloadedNewDelete::operator+(int)");
+			AssertMangling("??HOverloadedNewDelete@@QEAAHH@Z", "public: int __cdecl OverloadedNewDelete::operator+(int)");
 		}
 		[Test]
 		public void Mangle100() {
-			AssertMangling("??2TypedefNewDelete@@SAPAXI@Z", "static void * __cdecl TypedefNewDelete::operator new(unsigned int)");
+			AssertMangling("??2TypedefNewDelete@@SAPAXI@Z", "public: static void * __cdecl TypedefNewDelete::operator new(unsigned int)");
 		}
 		[Test]
 		public void Mangle101() {
-			AssertMangling("??_UTypedefNewDelete@@SAPAXI@Z", "static void * __cdecl TypedefNewDelete::operator new[](unsigned int)");
+			AssertMangling("??_UTypedefNewDelete@@SAPAXI@Z", "public: static void * __cdecl TypedefNewDelete::operator new[](unsigned int)");
 		}
 		[Test]
 		public void Mangle102() {
-			AssertMangling("??3TypedefNewDelete@@SAXPAX@Z", "static void __cdecl TypedefNewDelete::operator delete(void *)");
+			AssertMangling("??3TypedefNewDelete@@SAXPAX@Z", "public: static void __cdecl TypedefNewDelete::operator delete(void *)");
 		}
 		[Test]
 		public void Mangle103() {
-			AssertMangling("??_VTypedefNewDelete@@SAXPAX@Z", "static void __cdecl TypedefNewDelete::operator delete[](void *)");
+			AssertMangling("??_VTypedefNewDelete@@SAXPAX@Z", "public: static void __cdecl TypedefNewDelete::operator delete[](void *)");
 		}
 		[Test]
 		public void Mangle104() {
@@ -1773,15 +1773,15 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle118() {
-			AssertMangling("??0?$L@H@NS@@QEAA@XZ", "__cdecl NS::L<int>::L<int>(void)");
+			AssertMangling("??0?$L@H@NS@@QEAA@XZ", "public: __cdecl NS::L<int>::L<int>(void)");
 		}
 		[Test]
 		public void Mangle119() {
-			AssertMangling("??0Bar@Foo@@QEAA@XZ", "__cdecl Foo::Bar::Bar(void)");
+			AssertMangling("??0Bar@Foo@@QEAA@XZ", "public: __cdecl Foo::Bar::Bar(void)");
 		}
 		[Test]
 		public void Mangle120() {
-			AssertMangling("??0?$L@V?$H@PAH@PR26029@@@PR26029@@QAE@XZ", "__thiscall PR26029::L<class PR26029::H<int *>>::L<class PR26029::H<int *>>(void)");
+			AssertMangling("??0?$L@V?$H@PAH@PR26029@@@PR26029@@QAE@XZ", "public: __thiscall PR26029::L<class PR26029::H<int *>>::L<class PR26029::H<int *>>(void)");
 		}
 		#endregion
 
@@ -1804,11 +1804,11 @@ namespace SharpDemanglerTests
 		#region Operators
 		[Test]
 		public void Operators1() {
-			AssertMangling("??0Base@@QEAA@XZ", "__cdecl Base::Base(void)");
+			AssertMangling("??0Base@@QEAA@XZ", "public: __cdecl Base::Base(void)");
 		}
 		[Test]
 		public void Operators2() {
-			AssertMangling("??1Base@@UEAA@XZ", "virtual __cdecl Base::~Base(void)");
+			AssertMangling("??1Base@@UEAA@XZ", "public: virtual __cdecl Base::~Base(void)");
 		}
 		[Test]
 		public void Operators3() {
@@ -1820,167 +1820,167 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Operators5() {
-			AssertMangling("??4Base@@QEAAHH@Z", "int __cdecl Base::operator=(int)");
+			AssertMangling("??4Base@@QEAAHH@Z", "public: int __cdecl Base::operator=(int)");
 		}
 		[Test]
 		public void Operators6() {
-			AssertMangling("??6Base@@QEAAHH@Z", "int __cdecl Base::operator<<(int)");
+			AssertMangling("??6Base@@QEAAHH@Z", "public: int __cdecl Base::operator<<(int)");
 		}
 		[Test]
 		public void Operators7() {
-			AssertMangling("??5Base@@QEAAHH@Z", "int __cdecl Base::operator>>(int)");
+			AssertMangling("??5Base@@QEAAHH@Z", "public: int __cdecl Base::operator>>(int)");
 		}
 		[Test]
 		public void Operators8() {
-			AssertMangling("??7Base@@QEAAHXZ", "int __cdecl Base::operator!(void)");
+			AssertMangling("??7Base@@QEAAHXZ", "public: int __cdecl Base::operator!(void)");
 		}
 		[Test]
 		public void Operators9() {
-			AssertMangling("??8Base@@QEAAHH@Z", "int __cdecl Base::operator==(int)");
+			AssertMangling("??8Base@@QEAAHH@Z", "public: int __cdecl Base::operator==(int)");
 		}
 		[Test]
 		public void Operators10() {
-			AssertMangling("??9Base@@QEAAHH@Z", "int __cdecl Base::operator!=(int)");
+			AssertMangling("??9Base@@QEAAHH@Z", "public: int __cdecl Base::operator!=(int)");
 		}
 		[Test]
 		public void Operators11() {
-			AssertMangling("??ABase@@QEAAHH@Z", "int __cdecl Base::operator[](int)");
+			AssertMangling("??ABase@@QEAAHH@Z", "public: int __cdecl Base::operator[](int)");
 		}
 		[Test]
 		public void Operators12() {
-			AssertMangling("??BBase@@QEAAHXZ", "__cdecl Base::operator int(void)");
+			AssertMangling("??BBase@@QEAAHXZ", "public: __cdecl Base::operator int(void)");
 		}
 		[Test]
 		public void Operators13() {
-			AssertMangling("??CBase@@QEAAHXZ", "int __cdecl Base::operator->(void)");
+			AssertMangling("??CBase@@QEAAHXZ", "public: int __cdecl Base::operator->(void)");
 		}
 		[Test]
 		public void Operators14() {
-			AssertMangling("??DBase@@QEAAHXZ", "int __cdecl Base::operator*(void)");
+			AssertMangling("??DBase@@QEAAHXZ", "public: int __cdecl Base::operator*(void)");
 		}
 		[Test]
 		public void Operators15() {
-			AssertMangling("??EBase@@QEAAHXZ", "int __cdecl Base::operator++(void)");
+			AssertMangling("??EBase@@QEAAHXZ", "public: int __cdecl Base::operator++(void)");
 		}
 		[Test]
 		public void Operators16() {
-			AssertMangling("??EBase@@QEAAHH@Z", "int __cdecl Base::operator++(int)");
+			AssertMangling("??EBase@@QEAAHH@Z", "public: int __cdecl Base::operator++(int)");
 		}
 		[Test]
 		public void Operators17() {
-			AssertMangling("??FBase@@QEAAHXZ", "int __cdecl Base::operator--(void)");
+			AssertMangling("??FBase@@QEAAHXZ", "public: int __cdecl Base::operator--(void)");
 		}
 		[Test]
 		public void Operators18() {
-			AssertMangling("??FBase@@QEAAHH@Z", "int __cdecl Base::operator--(int)");
+			AssertMangling("??FBase@@QEAAHH@Z", "public: int __cdecl Base::operator--(int)");
 		}
 		[Test]
 		public void Operators19() {
-			AssertMangling("??GBase@@QEAAHH@Z", "int __cdecl Base::operator-(int)");
+			AssertMangling("??GBase@@QEAAHH@Z", "public: int __cdecl Base::operator-(int)");
 		}
 		[Test]
 		public void Operators20() {
-			AssertMangling("??HBase@@QEAAHH@Z", "int __cdecl Base::operator+(int)");
+			AssertMangling("??HBase@@QEAAHH@Z", "public: int __cdecl Base::operator+(int)");
 		}
 		[Test]
 		public void Operators21() {
-			AssertMangling("??IBase@@QEAAHH@Z", "int __cdecl Base::operator&(int)");
+			AssertMangling("??IBase@@QEAAHH@Z", "public: int __cdecl Base::operator&(int)");
 		}
 		[Test]
 		public void Operators22() {
-			AssertMangling("??JBase@@QEAAHH@Z", "int __cdecl Base::operator->*(int)");
+			AssertMangling("??JBase@@QEAAHH@Z", "public: int __cdecl Base::operator->*(int)");
 		}
 		[Test]
 		public void Operators23() {
-			AssertMangling("??KBase@@QEAAHH@Z", "int __cdecl Base::operator/(int)");
+			AssertMangling("??KBase@@QEAAHH@Z", "public: int __cdecl Base::operator/(int)");
 		}
 		[Test]
 		public void Operators24() {
-			AssertMangling("??LBase@@QEAAHH@Z", "int __cdecl Base::operator%(int)");
+			AssertMangling("??LBase@@QEAAHH@Z", "public: int __cdecl Base::operator%(int)");
 		}
 		[Test]
 		public void Operators25() {
-			AssertMangling("??MBase@@QEAAHH@Z", "int __cdecl Base::operator<(int)");
+			AssertMangling("??MBase@@QEAAHH@Z", "public: int __cdecl Base::operator<(int)");
 		}
 		[Test]
 		public void Operators26() {
-			AssertMangling("??NBase@@QEAAHH@Z", "int __cdecl Base::operator<=(int)");
+			AssertMangling("??NBase@@QEAAHH@Z", "public: int __cdecl Base::operator<=(int)");
 		}
 		[Test]
 		public void Operators27() {
-			AssertMangling("??OBase@@QEAAHH@Z", "int __cdecl Base::operator>(int)");
+			AssertMangling("??OBase@@QEAAHH@Z", "public: int __cdecl Base::operator>(int)");
 		}
 		[Test]
 		public void Operators28() {
-			AssertMangling("??PBase@@QEAAHH@Z", "int __cdecl Base::operator>=(int)");
+			AssertMangling("??PBase@@QEAAHH@Z", "public: int __cdecl Base::operator>=(int)");
 		}
 		[Test]
 		public void Operators29() {
-			AssertMangling("??QBase@@QEAAHH@Z", "int __cdecl Base::operator,(int)");
+			AssertMangling("??QBase@@QEAAHH@Z", "public: int __cdecl Base::operator,(int)");
 		}
 		[Test]
 		public void Operators30() {
-			AssertMangling("??RBase@@QEAAHXZ", "int __cdecl Base::operator()(void)");
+			AssertMangling("??RBase@@QEAAHXZ", "public: int __cdecl Base::operator()(void)");
 		}
 		[Test]
 		public void Operators31() {
-			AssertMangling("??SBase@@QEAAHXZ", "int __cdecl Base::operator~(void)");
+			AssertMangling("??SBase@@QEAAHXZ", "public: int __cdecl Base::operator~(void)");
 		}
 		[Test]
 		public void Operators32() {
-			AssertMangling("??TBase@@QEAAHH@Z", "int __cdecl Base::operator^(int)");
+			AssertMangling("??TBase@@QEAAHH@Z", "public: int __cdecl Base::operator^(int)");
 		}
 		[Test]
 		public void Operators33() {
-			AssertMangling("??UBase@@QEAAHH@Z", "int __cdecl Base::operator|(int)");
+			AssertMangling("??UBase@@QEAAHH@Z", "public: int __cdecl Base::operator|(int)");
 		}
 		[Test]
 		public void Operators34() {
-			AssertMangling("??VBase@@QEAAHH@Z", "int __cdecl Base::operator&&(int)");
+			AssertMangling("??VBase@@QEAAHH@Z", "public: int __cdecl Base::operator&&(int)");
 		}
 		[Test]
 		public void Operators35() {
-			AssertMangling("??WBase@@QEAAHH@Z", "int __cdecl Base::operator||(int)");
+			AssertMangling("??WBase@@QEAAHH@Z", "public: int __cdecl Base::operator||(int)");
 		}
 		[Test]
 		public void Operators36() {
-			AssertMangling("??XBase@@QEAAHH@Z", "int __cdecl Base::operator*=(int)");
+			AssertMangling("??XBase@@QEAAHH@Z", "public: int __cdecl Base::operator*=(int)");
 		}
 		[Test]
 		public void Operators37() {
-			AssertMangling("??YBase@@QEAAHH@Z", "int __cdecl Base::operator+=(int)");
+			AssertMangling("??YBase@@QEAAHH@Z", "public: int __cdecl Base::operator+=(int)");
 		}
 		[Test]
 		public void Operators38() {
-			AssertMangling("??ZBase@@QEAAHH@Z", "int __cdecl Base::operator-=(int)");
+			AssertMangling("??ZBase@@QEAAHH@Z", "public: int __cdecl Base::operator-=(int)");
 		}
 		[Test]
 		public void Operators39() {
-			AssertMangling("??_0Base@@QEAAHH@Z", "int __cdecl Base::operator/=(int)");
+			AssertMangling("??_0Base@@QEAAHH@Z", "public: int __cdecl Base::operator/=(int)");
 		}
 		[Test]
 		public void Operators40() {
-			AssertMangling("??_1Base@@QEAAHH@Z", "int __cdecl Base::operator%=(int)");
+			AssertMangling("??_1Base@@QEAAHH@Z", "public: int __cdecl Base::operator%=(int)");
 		}
 		[Test]
 		public void Operators41() {
-			AssertMangling("??_2Base@@QEAAHH@Z", "int __cdecl Base::operator>>=(int)");
+			AssertMangling("??_2Base@@QEAAHH@Z", "public: int __cdecl Base::operator>>=(int)");
 		}
 		[Test]
 		public void Operators42() {
-			AssertMangling("??_3Base@@QEAAHH@Z", "int __cdecl Base::operator<<=(int)");
+			AssertMangling("??_3Base@@QEAAHH@Z", "public: int __cdecl Base::operator<<=(int)");
 		}
 		[Test]
 		public void Operators43() {
-			AssertMangling("??_4Base@@QEAAHH@Z", "int __cdecl Base::operator&=(int)");
+			AssertMangling("??_4Base@@QEAAHH@Z", "public: int __cdecl Base::operator&=(int)");
 		}
 		[Test]
 		public void Operators44() {
-			AssertMangling("??_5Base@@QEAAHH@Z", "int __cdecl Base::operator|=(int)");
+			AssertMangling("??_5Base@@QEAAHH@Z", "public: int __cdecl Base::operator|=(int)");
 		}
 		[Test]
 		public void Operators45() {
-			AssertMangling("??_6Base@@QEAAHH@Z", "int __cdecl Base::operator^=(int)");
+			AssertMangling("??_6Base@@QEAAHH@Z", "public: int __cdecl Base::operator^=(int)");
 		}
 		[Test]
 		public void Operators46() {
@@ -2008,11 +2008,11 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Operators52() {
-			AssertMangling("??_DDiamond@@QEAAXXZ", "void __cdecl Diamond::`vbase dtor'(void)");
+			AssertMangling("??_DDiamond@@QEAAXXZ", "public: void __cdecl Diamond::`vbase dtor'(void)");
 		}
 		[Test]
 		public void Operators53() {
-			AssertMangling("??_EBase@@UEAAPEAXI@Z", "virtual void * __cdecl Base::`vector deleting dtor'(unsigned int)");
+			AssertMangling("??_EBase@@UEAAPEAXI@Z", "public: virtual void * __cdecl Base::`vector deleting dtor'(unsigned int)");
 		}
 		[Test]
 		public void Operators54() {
@@ -2020,11 +2020,11 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Operators55() {
-			AssertMangling("??_F?$SomeTemplate@H@@QAEXXZ", "void __thiscall SomeTemplate<int>::`default ctor closure'(void)");
+			AssertMangling("??_F?$SomeTemplate@H@@QAEXXZ", "public: void __thiscall SomeTemplate<int>::`default ctor closure'(void)");
 		}
 		[Test]
 		public void Operators56() {
-			AssertMangling("??_GBase@@UEAAPEAXI@Z", "virtual void * __cdecl Base::`scalar deleting dtor'(unsigned int)");
+			AssertMangling("??_GBase@@UEAAPEAXI@Z", "public: virtual void * __cdecl Base::`scalar deleting dtor'(unsigned int)");
 		}
 		[Test]
 		public void Operators57() {
@@ -2036,27 +2036,27 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Operators59() {
-			AssertMangling("??_JBase@@UEAAPEAXI@Z", "virtual void * __cdecl Base::`vector vbase ctor iterator'(unsigned int)");
+			AssertMangling("??_JBase@@UEAAPEAXI@Z", "public: virtual void * __cdecl Base::`vector vbase ctor iterator'(unsigned int)");
 		}
 		[Test]
 		public void Operators60() {
-			AssertMangling("??_KBase@@UEAAPEAXI@Z", "virtual void * __cdecl Base::`virtual displacement map'(unsigned int)");
+			AssertMangling("??_KBase@@UEAAPEAXI@Z", "public: virtual void * __cdecl Base::`virtual displacement map'(unsigned int)");
 		}
 		[Test]
 		public void Operators61() {
-			AssertMangling("??_LBase@@UEAAPEAXI@Z", "virtual void * __cdecl Base::`eh vector ctor iterator'(unsigned int)");
+			AssertMangling("??_LBase@@UEAAPEAXI@Z", "public: virtual void * __cdecl Base::`eh vector ctor iterator'(unsigned int)");
 		}
 		[Test]
 		public void Operators62() {
-			AssertMangling("??_MBase@@UEAAPEAXI@Z", "virtual void * __cdecl Base::`eh vector dtor iterator'(unsigned int)");
+			AssertMangling("??_MBase@@UEAAPEAXI@Z", "public: virtual void * __cdecl Base::`eh vector dtor iterator'(unsigned int)");
 		}
 		[Test]
 		public void Operators63() {
-			AssertMangling("??_NBase@@UEAAPEAXI@Z", "virtual void * __cdecl Base::`eh vector vbase ctor iterator'(unsigned int)");
+			AssertMangling("??_NBase@@UEAAPEAXI@Z", "public: virtual void * __cdecl Base::`eh vector vbase ctor iterator'(unsigned int)");
 		}
 		[Test]
 		public void Operators64() {
-			AssertMangling("??_O?$SomeTemplate@H@@QAEXXZ", "void __thiscall SomeTemplate<int>::`copy ctor closure'(void)");
+			AssertMangling("??_O?$SomeTemplate@H@@QAEXXZ", "public: void __thiscall SomeTemplate<int>::`copy ctor closure'(void)");
 		}
 		[Test]
 		public void Operators65() {
@@ -2064,7 +2064,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Operators66() {
-			AssertMangling("??_TDerived@@QEAAXXZ", "void __cdecl Derived::`local vftable ctor closure'(void)");
+			AssertMangling("??_TDerived@@QEAAXXZ", "public: void __cdecl Derived::`local vftable ctor closure'(void)");
 		}
 		[Test]
 		public void Operators67() {
@@ -2450,207 +2450,207 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Template8() {
-			AssertMangling("??0?$Class@$$CDVTypename@@@@QEAA@XZ", "__cdecl Class<class Typename const volatile>::Class<class Typename const volatile>(void)");
+			AssertMangling("??0?$Class@$$CDVTypename@@@@QEAA@XZ", "public: __cdecl Class<class Typename const volatile>::Class<class Typename const volatile>(void)");
 		}
 		[Test]
 		public void Template9() {
-			AssertMangling("??0?$Class@V?$Nested@VTypename@@@@@@QAE@XZ", "__thiscall Class<class Nested<class Typename>>::Class<class Nested<class Typename>>(void)");
+			AssertMangling("??0?$Class@V?$Nested@VTypename@@@@@@QAE@XZ", "public: __thiscall Class<class Nested<class Typename>>::Class<class Nested<class Typename>>(void)");
 		}
 		[Test]
 		public void Template10() {
-			AssertMangling("??0?$Class@V?$Nested@VTypename@@@@@@QEAA@XZ", "__cdecl Class<class Nested<class Typename>>::Class<class Nested<class Typename>>(void)");
+			AssertMangling("??0?$Class@V?$Nested@VTypename@@@@@@QEAA@XZ", "public: __cdecl Class<class Nested<class Typename>>::Class<class Nested<class Typename>>(void)");
 		}
 		[Test]
 		public void Template11() {
-			AssertMangling("??0?$Class@QAH@@QAE@XZ", "__thiscall Class<int *const>::Class<int *const>(void)");
+			AssertMangling("??0?$Class@QAH@@QAE@XZ", "public: __thiscall Class<int *const>::Class<int *const>(void)");
 		}
 		[Test]
 		public void Template12() {
-			AssertMangling("??0?$Class@QEAH@@QEAA@XZ", "__cdecl Class<int *const>::Class<int *const>(void)");
+			AssertMangling("??0?$Class@QEAH@@QEAA@XZ", "public: __cdecl Class<int *const>::Class<int *const>(void)");
 		}
 		[Test]
 		public void Template13() {
-			AssertMangling("??0?$Class@$$A6AHXZ@@QAE@XZ", "__thiscall Class<int __cdecl(void)>::Class<int __cdecl(void)>(void)");
+			AssertMangling("??0?$Class@$$A6AHXZ@@QAE@XZ", "public: __thiscall Class<int __cdecl(void)>::Class<int __cdecl(void)>(void)");
 		}
 		[Test]
 		public void Template14() {
-			AssertMangling("??0?$Class@$$A6AHXZ@@QEAA@XZ", "__cdecl Class<int __cdecl(void)>::Class<int __cdecl(void)>(void)");
+			AssertMangling("??0?$Class@$$A6AHXZ@@QEAA@XZ", "public: __cdecl Class<int __cdecl(void)>::Class<int __cdecl(void)>(void)");
 		}
 		[Test]
 		public void Template15() {
-			AssertMangling("??0?$Class@$$BY0A@H@@QAE@XZ", "__thiscall Class<int[]>::Class<int[]>(void)");
+			AssertMangling("??0?$Class@$$BY0A@H@@QAE@XZ", "public: __thiscall Class<int[]>::Class<int[]>(void)");
 		}
 		[Test]
 		public void Template16() {
-			AssertMangling("??0?$Class@$$BY0A@H@@QEAA@XZ", "__cdecl Class<int[]>::Class<int[]>(void)");
+			AssertMangling("??0?$Class@$$BY0A@H@@QEAA@XZ", "public: __cdecl Class<int[]>::Class<int[]>(void)");
 		}
 		[Test]
 		public void Template17() {
-			AssertMangling("??0?$Class@$$BY04H@@QAE@XZ", "__thiscall Class<int[5]>::Class<int[5]>(void)");
+			AssertMangling("??0?$Class@$$BY04H@@QAE@XZ", "public: __thiscall Class<int[5]>::Class<int[5]>(void)");
 		}
 		[Test]
 		public void Template18() {
-			AssertMangling("??0?$Class@$$BY04H@@QEAA@XZ", "__cdecl Class<int[5]>::Class<int[5]>(void)");
+			AssertMangling("??0?$Class@$$BY04H@@QEAA@XZ", "public: __cdecl Class<int[5]>::Class<int[5]>(void)");
 		}
 		[Test]
 		public void Template19() {
-			AssertMangling("??0?$Class@$$BY04$$CBH@@QAE@XZ", "__thiscall Class<int const[5]>::Class<int const[5]>(void)");
+			AssertMangling("??0?$Class@$$BY04$$CBH@@QAE@XZ", "public: __thiscall Class<int const[5]>::Class<int const[5]>(void)");
 		}
 		[Test]
 		public void Template20() {
-			AssertMangling("??0?$Class@$$BY04$$CBH@@QEAA@XZ", "__cdecl Class<int const[5]>::Class<int const[5]>(void)");
+			AssertMangling("??0?$Class@$$BY04$$CBH@@QEAA@XZ", "public: __cdecl Class<int const[5]>::Class<int const[5]>(void)");
 		}
 		[Test]
 		public void Template21() {
-			AssertMangling("??0?$Class@$$BY04QAH@@QAE@XZ", "__thiscall Class<int *const[5]>::Class<int *const[5]>(void)");
+			AssertMangling("??0?$Class@$$BY04QAH@@QAE@XZ", "public: __thiscall Class<int *const[5]>::Class<int *const[5]>(void)");
 		}
 		[Test]
 		public void Template22() {
-			AssertMangling("??0?$Class@$$BY04QEAH@@QEAA@XZ", "__cdecl Class<int *const[5]>::Class<int *const[5]>(void)");
+			AssertMangling("??0?$Class@$$BY04QEAH@@QEAA@XZ", "public: __cdecl Class<int *const[5]>::Class<int *const[5]>(void)");
 		}
 		[Test]
 		public void Template23() {
-			AssertMangling("??0?$BoolTemplate@$0A@@@QAE@XZ", "__thiscall BoolTemplate<0>::BoolTemplate<0>(void)");
+			AssertMangling("??0?$BoolTemplate@$0A@@@QAE@XZ", "public: __thiscall BoolTemplate<0>::BoolTemplate<0>(void)");
 		}
 		[Test]
 		public void Template24() {
-			AssertMangling("??0?$BoolTemplate@$0A@@@QEAA@XZ", "__cdecl BoolTemplate<0>::BoolTemplate<0>(void)");
+			AssertMangling("??0?$BoolTemplate@$0A@@@QEAA@XZ", "public: __cdecl BoolTemplate<0>::BoolTemplate<0>(void)");
 		}
 		[Test]
 		public void Template25() {
-			AssertMangling("??0?$BoolTemplate@$00@@QAE@XZ", "__thiscall BoolTemplate<1>::BoolTemplate<1>(void)");
+			AssertMangling("??0?$BoolTemplate@$00@@QAE@XZ", "public: __thiscall BoolTemplate<1>::BoolTemplate<1>(void)");
 		}
 		[Test]
 		public void Template26() {
-			AssertMangling("??0?$BoolTemplate@$00@@QEAA@XZ", "__cdecl BoolTemplate<1>::BoolTemplate<1>(void)");
+			AssertMangling("??0?$BoolTemplate@$00@@QEAA@XZ", "public: __cdecl BoolTemplate<1>::BoolTemplate<1>(void)");
 		}
 		[Test]
 		public void Template27() {
-			AssertMangling("??$Foo@H@?$BoolTemplate@$00@@QAEXH@Z", "void __thiscall BoolTemplate<1>::Foo<int>(int)");
+			AssertMangling("??$Foo@H@?$BoolTemplate@$00@@QAEXH@Z", "public: void __thiscall BoolTemplate<1>::Foo<int>(int)");
 		}
 		[Test]
 		public void Template28() {
-			AssertMangling("??$Foo@H@?$BoolTemplate@$00@@QEAAXH@Z", "void __cdecl BoolTemplate<1>::Foo<int>(int)");
+			AssertMangling("??$Foo@H@?$BoolTemplate@$00@@QEAAXH@Z", "public: void __cdecl BoolTemplate<1>::Foo<int>(int)");
 		}
 		[Test]
 		public void Template29() {
-			AssertMangling("??0?$IntTemplate@$0A@@@QAE@XZ", "__thiscall IntTemplate<0>::IntTemplate<0>(void)");
+			AssertMangling("??0?$IntTemplate@$0A@@@QAE@XZ", "public: __thiscall IntTemplate<0>::IntTemplate<0>(void)");
 		}
 		[Test]
 		public void Template30() {
-			AssertMangling("??0?$IntTemplate@$0A@@@QEAA@XZ", "__cdecl IntTemplate<0>::IntTemplate<0>(void)");
+			AssertMangling("??0?$IntTemplate@$0A@@@QEAA@XZ", "public: __cdecl IntTemplate<0>::IntTemplate<0>(void)");
 		}
 		[Test]
 		public void Template31() {
-			AssertMangling("??0?$IntTemplate@$04@@QAE@XZ", "__thiscall IntTemplate<5>::IntTemplate<5>(void)");
+			AssertMangling("??0?$IntTemplate@$04@@QAE@XZ", "public: __thiscall IntTemplate<5>::IntTemplate<5>(void)");
 		}
 		[Test]
 		public void Template32() {
-			AssertMangling("??0?$IntTemplate@$04@@QEAA@XZ", "__cdecl IntTemplate<5>::IntTemplate<5>(void)");
+			AssertMangling("??0?$IntTemplate@$04@@QEAA@XZ", "public: __cdecl IntTemplate<5>::IntTemplate<5>(void)");
 		}
 		[Test]
 		public void Template33() {
-			AssertMangling("??0?$IntTemplate@$0L@@@QAE@XZ", "__thiscall IntTemplate<11>::IntTemplate<11>(void)");
+			AssertMangling("??0?$IntTemplate@$0L@@@QAE@XZ", "public: __thiscall IntTemplate<11>::IntTemplate<11>(void)");
 		}
 		[Test]
 		public void Template34() {
-			AssertMangling("??0?$IntTemplate@$0L@@@QEAA@XZ", "__cdecl IntTemplate<11>::IntTemplate<11>(void)");
+			AssertMangling("??0?$IntTemplate@$0L@@@QEAA@XZ", "public: __cdecl IntTemplate<11>::IntTemplate<11>(void)");
 		}
 		[Test]
 		public void Template35() {
-			AssertMangling("??0?$IntTemplate@$0BAA@@@QAE@XZ", "__thiscall IntTemplate<256>::IntTemplate<256>(void)");
+			AssertMangling("??0?$IntTemplate@$0BAA@@@QAE@XZ", "public: __thiscall IntTemplate<256>::IntTemplate<256>(void)");
 		}
 		[Test]
 		public void Template36() {
-			AssertMangling("??0?$IntTemplate@$0BAA@@@QEAA@XZ", "__cdecl IntTemplate<256>::IntTemplate<256>(void)");
+			AssertMangling("??0?$IntTemplate@$0BAA@@@QEAA@XZ", "public: __cdecl IntTemplate<256>::IntTemplate<256>(void)");
 		}
 		[Test]
 		public void Template37() {
-			AssertMangling("??0?$IntTemplate@$0CAB@@@QAE@XZ", "__thiscall IntTemplate<513>::IntTemplate<513>(void)");
+			AssertMangling("??0?$IntTemplate@$0CAB@@@QAE@XZ", "public: __thiscall IntTemplate<513>::IntTemplate<513>(void)");
 		}
 		[Test]
 		public void Template38() {
-			AssertMangling("??0?$IntTemplate@$0CAB@@@QEAA@XZ", "__cdecl IntTemplate<513>::IntTemplate<513>(void)");
+			AssertMangling("??0?$IntTemplate@$0CAB@@@QEAA@XZ", "public: __cdecl IntTemplate<513>::IntTemplate<513>(void)");
 		}
 		[Test]
 		public void Template39() {
-			AssertMangling("??0?$IntTemplate@$0EAC@@@QAE@XZ", "__thiscall IntTemplate<1026>::IntTemplate<1026>(void)");
+			AssertMangling("??0?$IntTemplate@$0EAC@@@QAE@XZ", "public: __thiscall IntTemplate<1026>::IntTemplate<1026>(void)");
 		}
 		[Test]
 		public void Template40() {
-			AssertMangling("??0?$IntTemplate@$0EAC@@@QEAA@XZ", "__cdecl IntTemplate<1026>::IntTemplate<1026>(void)");
+			AssertMangling("??0?$IntTemplate@$0EAC@@@QEAA@XZ", "public: __cdecl IntTemplate<1026>::IntTemplate<1026>(void)");
 		}
 		[Test]
 		public void Template41() {
-			AssertMangling("??0?$IntTemplate@$0PPPP@@@QAE@XZ", "__thiscall IntTemplate<65535>::IntTemplate<65535>(void)");
+			AssertMangling("??0?$IntTemplate@$0PPPP@@@QAE@XZ", "public: __thiscall IntTemplate<65535>::IntTemplate<65535>(void)");
 		}
 		[Test]
 		public void Template42() {
-			AssertMangling("??0?$IntTemplate@$0PPPP@@@QEAA@XZ", "__cdecl IntTemplate<65535>::IntTemplate<65535>(void)");
+			AssertMangling("??0?$IntTemplate@$0PPPP@@@QEAA@XZ", "public: __cdecl IntTemplate<65535>::IntTemplate<65535>(void)");
 		}
 		[Test]
 		public void Template43() {
-			AssertMangling("??0?$IntTemplate@$0?0@@QAE@XZ", "__thiscall IntTemplate<-1>::IntTemplate<-1>(void)");
+			AssertMangling("??0?$IntTemplate@$0?0@@QAE@XZ", "public: __thiscall IntTemplate<-1>::IntTemplate<-1>(void)");
 		}
 		[Test]
 		public void Template44() {
-			AssertMangling("??0?$IntTemplate@$0?0@@QEAA@XZ", "__cdecl IntTemplate<-1>::IntTemplate<-1>(void)");
+			AssertMangling("??0?$IntTemplate@$0?0@@QEAA@XZ", "public: __cdecl IntTemplate<-1>::IntTemplate<-1>(void)");
 		}
 		[Test]
 		public void Template45() {
-			AssertMangling("??0?$IntTemplate@$0?8@@QAE@XZ", "__thiscall IntTemplate<-9>::IntTemplate<-9>(void)");
+			AssertMangling("??0?$IntTemplate@$0?8@@QAE@XZ", "public: __thiscall IntTemplate<-9>::IntTemplate<-9>(void)");
 		}
 		[Test]
 		public void Template46() {
-			AssertMangling("??0?$IntTemplate@$0?8@@QEAA@XZ", "__cdecl IntTemplate<-9>::IntTemplate<-9>(void)");
+			AssertMangling("??0?$IntTemplate@$0?8@@QEAA@XZ", "public: __cdecl IntTemplate<-9>::IntTemplate<-9>(void)");
 		}
 		[Test]
 		public void Template47() {
-			AssertMangling("??0?$IntTemplate@$0?9@@QAE@XZ", "__thiscall IntTemplate<-10>::IntTemplate<-10>(void)");
+			AssertMangling("??0?$IntTemplate@$0?9@@QAE@XZ", "public: __thiscall IntTemplate<-10>::IntTemplate<-10>(void)");
 		}
 		[Test]
 		public void Template48() {
-			AssertMangling("??0?$IntTemplate@$0?9@@QEAA@XZ", "__cdecl IntTemplate<-10>::IntTemplate<-10>(void)");
+			AssertMangling("??0?$IntTemplate@$0?9@@QEAA@XZ", "public: __cdecl IntTemplate<-10>::IntTemplate<-10>(void)");
 		}
 		[Test]
 		public void Template49() {
-			AssertMangling("??0?$IntTemplate@$0?L@@@QAE@XZ", "__thiscall IntTemplate<-11>::IntTemplate<-11>(void)");
+			AssertMangling("??0?$IntTemplate@$0?L@@@QAE@XZ", "public: __thiscall IntTemplate<-11>::IntTemplate<-11>(void)");
 		}
 		[Test]
 		public void Template50() {
-			AssertMangling("??0?$IntTemplate@$0?L@@@QEAA@XZ", "__cdecl IntTemplate<-11>::IntTemplate<-11>(void)");
+			AssertMangling("??0?$IntTemplate@$0?L@@@QEAA@XZ", "public: __cdecl IntTemplate<-11>::IntTemplate<-11>(void)");
 		}
 		[Test]
 		public void Template51() {
-			AssertMangling("??0?$UnsignedIntTemplate@$0PPPPPPPP@@@QAE@XZ", "__thiscall UnsignedIntTemplate<4294967295>::UnsignedIntTemplate<4294967295>(void)");
+			AssertMangling("??0?$UnsignedIntTemplate@$0PPPPPPPP@@@QAE@XZ", "public: __thiscall UnsignedIntTemplate<4294967295>::UnsignedIntTemplate<4294967295>(void)");
 		}
 		[Test]
 		public void Template52() {
-			AssertMangling("??0?$UnsignedIntTemplate@$0PPPPPPPP@@@QEAA@XZ", "__cdecl UnsignedIntTemplate<4294967295>::UnsignedIntTemplate<4294967295>(void)");
+			AssertMangling("??0?$UnsignedIntTemplate@$0PPPPPPPP@@@QEAA@XZ", "public: __cdecl UnsignedIntTemplate<4294967295>::UnsignedIntTemplate<4294967295>(void)");
 		}
 		[Test]
 		public void Template53() {
-			AssertMangling("??0?$LongLongTemplate@$0?IAAAAAAAAAAAAAAA@@@QAE@XZ", "__thiscall LongLongTemplate<-9223372036854775808>::LongLongTemplate<-9223372036854775808>(void)");
+			AssertMangling("??0?$LongLongTemplate@$0?IAAAAAAAAAAAAAAA@@@QAE@XZ", "public: __thiscall LongLongTemplate<-9223372036854775808>::LongLongTemplate<-9223372036854775808>(void)");
 		}
 		[Test]
 		public void Template54() {
-			AssertMangling("??0?$LongLongTemplate@$0?IAAAAAAAAAAAAAAA@@@QEAA@XZ", "__cdecl LongLongTemplate<-9223372036854775808>::LongLongTemplate<-9223372036854775808>(void)");
+			AssertMangling("??0?$LongLongTemplate@$0?IAAAAAAAAAAAAAAA@@@QEAA@XZ", "public: __cdecl LongLongTemplate<-9223372036854775808>::LongLongTemplate<-9223372036854775808>(void)");
 		}
 		[Test]
 		public void Template55() {
-			AssertMangling("??0?$LongLongTemplate@$0HPPPPPPPPPPPPPPP@@@QAE@XZ", "__thiscall LongLongTemplate<9223372036854775807>::LongLongTemplate<9223372036854775807>(void)");
+			AssertMangling("??0?$LongLongTemplate@$0HPPPPPPPPPPPPPPP@@@QAE@XZ", "public: __thiscall LongLongTemplate<9223372036854775807>::LongLongTemplate<9223372036854775807>(void)");
 		}
 		[Test]
 		public void Template56() {
-			AssertMangling("??0?$LongLongTemplate@$0HPPPPPPPPPPPPPPP@@@QEAA@XZ", "__cdecl LongLongTemplate<9223372036854775807>::LongLongTemplate<9223372036854775807>(void)");
+			AssertMangling("??0?$LongLongTemplate@$0HPPPPPPPPPPPPPPP@@@QEAA@XZ", "public: __cdecl LongLongTemplate<9223372036854775807>::LongLongTemplate<9223372036854775807>(void)");
 		}
 		[Test]
 		public void Template57() {
-			AssertMangling("??0?$UnsignedLongLongTemplate@$0?0@@QAE@XZ", "__thiscall UnsignedLongLongTemplate<-1>::UnsignedLongLongTemplate<-1>(void)");
+			AssertMangling("??0?$UnsignedLongLongTemplate@$0?0@@QAE@XZ", "public: __thiscall UnsignedLongLongTemplate<-1>::UnsignedLongLongTemplate<-1>(void)");
 		}
 		[Test]
 		public void Template58() {
-			AssertMangling("??0?$UnsignedLongLongTemplate@$0?0@@QEAA@XZ", "__cdecl UnsignedLongLongTemplate<-1>::UnsignedLongLongTemplate<-1>(void)");
+			AssertMangling("??0?$UnsignedLongLongTemplate@$0?0@@QEAA@XZ", "public: __cdecl UnsignedLongLongTemplate<-1>::UnsignedLongLongTemplate<-1>(void)");
 		}
 		[Test]
 		public void Template59() {
@@ -2911,11 +2911,11 @@ namespace SharpDemanglerTests
 		#region Windows
 		[Test]
 		public void Windows1() {
-			AssertMangling("?bar@Foo@@SGXXZ", "static void __stdcall Foo::bar(void)");
+			AssertMangling("?bar@Foo@@SGXXZ", "public: static void __stdcall Foo::bar(void)");
 		}
 		[Test]
 		public void Windows2() {
-			AssertMangling("?bar@Foo@@QAGXXZ", "void __stdcall Foo::bar(void)");
+			AssertMangling("?bar@Foo@@QAGXXZ", "public: void __stdcall Foo::bar(void)");
 		}
 		[Test]
 		public void Windows3() {
