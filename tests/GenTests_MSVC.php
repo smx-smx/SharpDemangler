@@ -24,6 +24,7 @@ while(!feof($f)){
 		if(strpos($line, $find) !== 0)
 			continue;
 		$expected = substr($line, strlen($find));
+		$expected = addslashes($expected);
 		$out = <<<EOT
 [Test]
 public void {$prefix}{$testNumber}(){
