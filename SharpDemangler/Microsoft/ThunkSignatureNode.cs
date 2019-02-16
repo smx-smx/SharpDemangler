@@ -2,17 +2,22 @@
 
 namespace SharpDemangler.Microsoft
 {
-	public class ThisAdjustor
+	public struct ThisAdjustor
 	{
-		public uint StaticOffset = 0;
-		public int VBPtrOffset = 0;
-		public int VBOffsetOffset = 0;
-		public int VtordispOffset = 0;
+		public uint StaticOffset ;
+		public int VBPtrOffset;
+		public int VBOffsetOffset;
+		public int VtordispOffset;
 	}
 
 	public class ThunkSignatureNode : FunctionSignatureNode
 	{
-		public ThisAdjustor ThisAdjust;
+		public ThisAdjustor ThisAdjust = new ThisAdjustor() {
+			StaticOffset = 0,
+			VBOffsetOffset = 0,
+			VBPtrOffset = 0,
+			VtordispOffset = 0
+		};
 
 		public ThunkSignatureNode() : base(NodeKind.ThunkSignature) {
 		}

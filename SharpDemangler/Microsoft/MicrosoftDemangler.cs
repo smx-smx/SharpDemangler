@@ -497,7 +497,7 @@ namespace SharpDemangler.Microsoft
 					char inheritanceSpecifier = mangledName.PopFront();
 					SymbolNode s = null;
 					if (mangledName.StartsWith('?')) {
-						s = Parse(mangledName);
+						s = Parse(ref mangledName);
 						MemorizeIdentifier(s.Name.UnqualifiedIdentifier);
 					}
 
@@ -522,7 +522,7 @@ namespace SharpDemangler.Microsoft
 				} else if (mangledName.StartsWith("$E?")) {
 					mangledName.ConsumeFront("$E");
 					tp.Node = new TemplateParameterReferenceNode();
-					tprn.Symbol = Parse(mangledName);
+					tprn.Symbol = Parse(ref mangledName);
 					tprn.Affinity = PointerAffinity.Reference;
 				} else if (mangledName.StartsWith("$F") || mangledName.StartsWith("$G")) {
 					tp.Node = tprn = new TemplateParameterReferenceNode();
@@ -574,7 +574,6 @@ namespace SharpDemangler.Microsoft
 		void MemorizeIdentifier(IdentifierNode identifier) {
 			OutputStream os = new OutputStream();
 			identifier.Output(os, OutputFlags.Default);
-			os.Append('\0');
 			string name = os.ToString();
 
 			StringView owned = new StringView(name);
@@ -1117,7 +1116,7 @@ namespace SharpDemangler.Microsoft
 		VariableSymbolNode DemangleRttiBaseClassDescriptorNode(ref StringView mangledName) {
 			RttiBaseClassDescriptorNode rbcdn = new RttiBaseClassDescriptorNode();
 			rbcdn.NVOffset = (uint)DemangleUnsigned(ref mangledName);
-			rbcdn.VBPtrOffset = (int)DemangleUnsigned(ref mangledName);
+			rbcdn.VBPtrOffset = (int)DemangleSigned(ref mangledName);
 			rbcdn.VBTableOffset = (uint)DemangleUnsigned(ref mangledName);
 			rbcdn.Flags = (uint)DemangleUnsigned(ref mangledName);
 			if (error)
@@ -1264,7 +1263,7 @@ namespace SharpDemangler.Microsoft
 			return qn;
 		}
 
-		SymbolNode Parse(StringView mangledName) {
+		SymbolNode Parse(ref StringView mangledName) {
 			if (mangledName.StartsWith("??@")) {
 				SymbolNode s = new SymbolNode(NodeKind.Md5Symbol);
 				s.Name = SynthesizeQualifiedName(mangledName);
@@ -1343,7 +1342,7 @@ namespace SharpDemangler.Microsoft
 			MicrosoftDemangler demangler = new MicrosoftDemangler();
 
 			StringView name = new StringView(mangledName);
-			SymbolNode ast = demangler.Parse(name);
+			SymbolNode ast = demangler.Parse(ref name);
 			OutputStream buf = new OutputStream();
 
 			if (flags.HasFlag(MSDemangleFlags.DumpBackrefs))
@@ -1371,7 +1370,7 @@ namespace SharpDemangler.Microsoft
 			mangledName.ConsumeFront('?');
 
 			Assert.True(!error);
-			Node scope = Parse(mangledName);
+			Node scope = Parse(ref mangledName);
 			if (error)
 				return null;
 
@@ -1661,7 +1660,7 @@ namespace SharpDemangler.Microsoft
 				ty = DemangleClassType(ref mangledName);
 			else if (IsPointerType(mangledName)) {
 				if (IsMemberPointer(mangledName))
-					ty = DemangleMemberPointerType(mangledName);
+					ty = DemangleMemberPointerType(ref mangledName);
 				else if (!error)
 					ty = DemanglePointerType(ref mangledName);
 				else
@@ -1888,7 +1887,7 @@ namespace SharpDemangler.Microsoft
 			return pointer;
 		}
 
-		PointerTypeNode DemangleMemberPointerType(StringView mangledName) {
+		PointerTypeNode DemangleMemberPointerType(ref StringView mangledName) {
 			PointerTypeNode pointer = new PointerTypeNode();
 			(pointer.Quals, pointer.Affinity) = DemanglePointerCVQualifiers(ref mangledName);
 			Assert.True(pointer.Affinity == PointerAffinity.Pointer);
