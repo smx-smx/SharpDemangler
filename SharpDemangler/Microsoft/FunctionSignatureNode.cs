@@ -51,7 +51,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		public override void OutputPost(OutputStream os, OutputFlags flags) {
-			if (!(FunctionClass.HasFlag(FuncClass.NoParameterList))) {
+			if (!FunctionClass.HasFlag(FuncClass.NoParameterList)) {
 				os.Append('(');
 				if (Params != null) {
 					Params.Output(os, flags);

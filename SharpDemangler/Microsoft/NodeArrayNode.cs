@@ -7,7 +7,7 @@ namespace SharpDemangler.Microsoft
 {
 	public class NodeArrayNode : Node, IEnumerable<Node>
 	{
-		public Node[] Nodes;
+		public Node[] Nodes = new Node[] { };
 
 		public NodeArrayNode() : base(NodeKind.NodeArray) {
 		}

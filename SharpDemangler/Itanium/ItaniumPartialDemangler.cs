@@ -35,7 +35,6 @@ namespace SharpDemangler.Itanium
 		public string PrintNode(Node rootNode) {
 			OutputStream sb = new OutputStream();
 			rootNode.Print(sb);
-			sb.Append('\0');
 			return sb.ToString();
 		}
 
@@ -106,7 +105,6 @@ namespace SharpDemangler.Itanium
 					break;
 			}
 
-			sb.Append('\0');
 			if(n != null) {
 				n = sb.Length;
 			}
@@ -131,7 +129,6 @@ namespace SharpDemangler.Itanium
 			sb.Append('(');
 			Params.PrintWithComma(sb);
 			sb.Append(')');
-			sb.Append('\0');
 
 			if(n != null) {
 				n = sb.Length;
@@ -148,7 +145,6 @@ namespace SharpDemangler.Itanium
 			if (ret != null)
 				ret.Print(sb);
 
-			sb.Append('\0');
 			if(n != null) {
 				n = sb.Length;
 			}

@@ -14,7 +14,7 @@ namespace SharpDemangler.Microsoft
 
 		public IntegerLiteralNode(ulong value, bool isNegative) : base(NodeKind.IntegerLiteral) {
 			this.Value = value;
-			this.IsNegative = IsNegative;
+			this.IsNegative = isNegative;
 		}
 
 		public override void Output(OutputStream os, OutputFlags flags) {

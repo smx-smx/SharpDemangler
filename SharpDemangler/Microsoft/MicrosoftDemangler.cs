@@ -19,8 +19,7 @@ namespace SharpDemangler.Microsoft
 
 		BackrefContext backrefs = new BackrefContext();
 
-		bool IsMemberPointer(StringView mangledName, out bool error) {
-			error = false;
+		bool IsMemberPointer(StringView mangledName) {
 			switch (mangledName.PopFront()) {
 				case '$':
 					return false;
@@ -103,7 +102,7 @@ namespace SharpDemangler.Microsoft
 			return SpecialIntrinsicKind.None;
 		}
 
-		bool StartsWithLocalScopePattern(ref StringView s) {
+		bool StartsWithLocalScopePattern(StringView s) {
 			if (!s.ConsumeFront('?'))
 				return false;
 			if (s.Length < 2)
@@ -178,7 +177,7 @@ namespace SharpDemangler.Microsoft
 
 		(Qualifiers, PointerAffinity) DemanglePointerCVQualifiers(ref StringView mangledName) {
 			if (mangledName.ConsumeFront("$$Q")) {
-				return (Qualifiers.None, PointerAffinity.Reference);
+				return (Qualifiers.None, PointerAffinity.RValueReference);
 			}
 
 			switch (mangledName.PopFront()) {
@@ -193,7 +192,7 @@ namespace SharpDemangler.Microsoft
 				case 'S':
 					return (Qualifiers.Const | Qualifiers.Volatile, PointerAffinity.Pointer);
 				default:
-					Assert.True(false); //Ty is not a pointer type
+					Assert.True(false, "Ty is not a pointer type"); //Ty is not a pointer type
 					break;
 			}
 
@@ -624,7 +623,7 @@ namespace SharpDemangler.Microsoft
 			if (mangledName.StartsWith("?A"))
 				return DemangleAnonymousNamespaceName(ref mangledName);
 
-			if (StartsWithLocalScopePattern(ref mangledName))
+			if (StartsWithLocalScopePattern(mangledName))
 				return DemangleLocallyScopedNamePiece(ref mangledName);
 
 			return DemangleSimpleName(ref mangledName, true);
@@ -665,6 +664,7 @@ namespace SharpDemangler.Microsoft
 				ttn.ThisAdjust.VtordispOffset = (int)DemangleSigned(ref mangledName);
 				ttn.ThisAdjust.StaticOffset = (uint)DemangleSigned(ref mangledName);
 			}
+
 			if (fc.HasFlag(FuncClass.NoParameterList)) {
 				fsn = new FunctionSignatureNode();
 			} else {
@@ -758,7 +758,7 @@ namespace SharpDemangler.Microsoft
 			return null;
 		}
 
-		
+
 		QualifiedNameNode SynthesizeQualifiedName(StringView name) {
 			NamedIdentifierNode id = SynthesizeNamedIdentifier(name);
 			return SynthesizeQualifiedName(id);
@@ -1098,7 +1098,6 @@ namespace SharpDemangler.Microsoft
 				}
 			}
 
-			os.Append('\0');
 			resultBuffer = os.ToString();
 			result.DecodedString = CopyString(resultBuffer);
 			return result;
@@ -1284,7 +1283,7 @@ namespace SharpDemangler.Microsoft
 				return si;
 			}
 
-			QualifiedNameNode qn = DemangleFullyQualifiedTypeName(ref mangledName);
+			QualifiedNameNode qn = DemangleFullyQualifiedSymbolName(ref mangledName);
 			if (error)
 				return null;
 
@@ -1302,8 +1301,8 @@ namespace SharpDemangler.Microsoft
 		[Flags]
 		public enum MSDemangleFlags
 		{
-			None,
-			DumpBackrefs
+			None = 0,
+			DumpBackrefs = 1 << 0
 		}
 
 		public enum DemangleStatus
@@ -1318,7 +1317,7 @@ namespace SharpDemangler.Microsoft
 		void DumpBackReferences() {
 			Console.WriteLine($"{backrefs.FunctionParamCount} function parameter backreferences");
 
-			for(int i=0; i<backrefs.FunctionParamCount; i++) {
+			for (int i = 0; i < backrefs.FunctionParamCount; i++) {
 				OutputStream os = new OutputStream();
 				TypeNode t = backrefs.FunctionParams[i];
 				t.Output(os, OutputFlags.Default);
@@ -1330,7 +1329,7 @@ namespace SharpDemangler.Microsoft
 				Console.WriteLine();
 
 			Console.WriteLine($"{backrefs.NamesCount} name backreferences");
-			for(int i=0; i<backrefs.NamesCount; i++) {
+			for (int i = 0; i < backrefs.NamesCount; i++) {
 				Console.WriteLine($"  [{i}] - {backrefs.Names[i].Name.ToString()}");
 			}
 
@@ -1354,7 +1353,6 @@ namespace SharpDemangler.Microsoft
 				status = DemangleStatus.InvalidMangledName;
 			else {
 				ast.Output(buf, OutputFlags.Default);
-				buf.Append('\0');
 			}
 
 			return status == DemangleStatus.Success ? buf.ToString() : null;
@@ -1362,7 +1360,7 @@ namespace SharpDemangler.Microsoft
 		}
 
 		NamedIdentifierNode DemangleLocallyScopedNamePiece(ref StringView mangledName) {
-			Assert.True(StartsWithLocalScopePattern(ref mangledName));
+			Assert.True(StartsWithLocalScopePattern(mangledName));
 
 			NamedIdentifierNode identifier = new NamedIdentifierNode();
 			mangledName.ConsumeFront('?');
@@ -1569,6 +1567,7 @@ namespace SharpDemangler.Microsoft
 			ulong ret = 0;
 			if (StartsWithDigit(mangledName)) {
 				ret = (ulong)(mangledName[0] - '0') + 1;
+				mangledName = mangledName.DropFront(1);
 				return (ret, isNegative);
 			}
 
@@ -1602,7 +1601,7 @@ namespace SharpDemangler.Microsoft
 
 			ArrayTypeNode aty = new ArrayTypeNode();
 			NodeList head = new NodeList();
-			NodeList tail = new NodeList();
+			NodeList tail = head;
 
 			for (ulong i = 0; i < rank; i++) {
 				ulong d = 0;
@@ -1661,7 +1660,7 @@ namespace SharpDemangler.Microsoft
 			if (IsTagType(mangledName))
 				ty = DemangleClassType(ref mangledName);
 			else if (IsPointerType(mangledName)) {
-				if (IsMemberPointer(mangledName, out error))
+				if (IsMemberPointer(mangledName))
 					ty = DemangleMemberPointerType(mangledName);
 				else if (!error)
 					ty = DemanglePointerType(ref mangledName);
@@ -1790,10 +1789,10 @@ namespace SharpDemangler.Microsoft
 
 		NodeArrayNode DemangleFunctionParameterList(ref StringView mangledName) {
 			if (mangledName.ConsumeFront('X'))
-				return new NodeArrayNode();
+				return null;
 
 			NodeList head = new NodeList();
-			NodeList current = head;
+			ref NodeList current = ref head;
 
 			int count = 0;
 			while (!error && !mangledName.StartsWith('@') && !mangledName.StartsWith('Z')) {
@@ -1809,7 +1808,7 @@ namespace SharpDemangler.Microsoft
 
 					current = new NodeList();
 					current.Node = backrefs.FunctionParams[n];
-					current = current.Next;
+					current = ref current.Next;
 					continue;
 				}
 
@@ -1828,11 +1827,11 @@ namespace SharpDemangler.Microsoft
 				if (backrefs.FunctionParamCount <= 9 && charsConsumed > 1)
 					backrefs.FunctionParams[backrefs.FunctionParamCount++] = tn;
 
-				current = current.Next;
+				current = ref current.Next;
 			}
 
 			if (error)
-				return new NodeArrayNode();
+				return null;
 
 			NodeArrayNode na = NodeListToNodeArray(head, count);
 			if (mangledName.ConsumeFront('@'))
@@ -1842,7 +1841,7 @@ namespace SharpDemangler.Microsoft
 				return na;
 
 			SetError();
-			return new NodeArrayNode();
+			return null;
 		}
 
 		void DemangleThrowSpecification(ref StringView mangledName) {

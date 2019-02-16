@@ -12,6 +12,8 @@ namespace SharpDemanglerTests
 			Assert.AreEqual(MicrosoftDemangler.DemangleStatus.Success, status);
 		}
 
+		#region ArgQualifiers
+
 		[Test]
 		public void ArgQualifiers1() {
 			AssertMangling("?foo@@YAXI@Z", "void __cdecl foo(unsigned int)");
@@ -468,5 +470,301 @@ namespace SharpDemanglerTests
 		public void ArgQualifiers114() {
 			AssertMangling("?pr23325@@YAXQEBUS@@0@Z", "void __cdecl pr23325(struct S const *const, struct S const *const)");
 		}
+		#endregion
+
+		#region Basic
+		[Test]
+		public void Basic1() {
+			AssertMangling("?x@@3HA", "int x");
+		}
+		[Test]
+		public void Basic2() {
+			AssertMangling("?x@@3PEAHEA", "int *x");
+		}
+		[Test]
+		public void Basic3() {
+			AssertMangling("?x@@3PEAPEAHEA", "int **x");
+		}
+		[Test]
+		public void Basic4() {
+			AssertMangling("?x@@3PEAY02HEA", "int (*x)[3]");
+		}
+		[Test]
+		public void Basic5() {
+			AssertMangling("?x@@3PEAY124HEA", "int (*x)[3][5]");
+		}
+		[Test]
+		public void Basic6() {
+			AssertMangling("?x@@3PEAY02$$CBHEA", "int const (*x)[3]");
+		}
+		[Test]
+		public void Basic7() {
+			AssertMangling("?x@@3PEAEEA", "unsigned char *x");
+		}
+		[Test]
+		public void Basic8() {
+			AssertMangling("?x@@3PEAY1NKM@5HEA", "int (*x)[3500][6]");
+		}
+		[Test]
+		public void Basic9() {
+			AssertMangling("?x@@YAXMH@Z", "void __cdecl x(float, int)");
+		}
+		[Test]
+		public void Basic10() {
+			AssertMangling("?x@@3P6AHMNH@ZEA", "int (__cdecl *x)(float, double, int)");
+		}
+		[Test]
+		public void Basic11() {
+			AssertMangling("?x@@3P6AHP6AHM@ZN@ZEA", "int (__cdecl *x)(int (__cdecl *)(float), double)");
+		}
+		[Test]
+		public void Basic12() {
+			AssertMangling("?x@@3P6AHP6AHM@Z0@ZEA", "int (__cdecl *x)(int (__cdecl *)(float), int (__cdecl *)(float))");
+		}
+		[Test]
+		public void Basic13() {
+			AssertMangling("?x@ns@@3HA", "int ns::x");
+		}
+		[Test]
+		public void Basic14() {
+			AssertMangling("?x@@3PEAHEA", "int *x");
+		}
+		[Test]
+		public void Basic15() {
+			AssertMangling("?x@@3PEBHEB", "int const *x");
+		}
+		[Test]
+		public void Basic16() {
+			AssertMangling("?x@@3QEAHEA", "int *const x");
+		}
+		[Test]
+		public void Basic17() {
+			AssertMangling("?x@@3QEBHEB", "int const *const x");
+		}
+		[Test]
+		public void Basic18() {
+			AssertMangling("?x@@3AEBHEB", "int const &x");
+		}
+		[Test]
+		public void Basic19() {
+			AssertMangling("?x@@3PEAUty@@EA", "struct ty *x");
+		}
+		[Test]
+		public void Basic20() {
+			AssertMangling("?x@@3PEATty@@EA", "union ty *x");
+		}
+		[Test]
+		public void Basic21() {
+			AssertMangling("?x@@3PEAVty@@EA", "class ty *x");
+		}
+		[Test]
+		public void Basic22() {
+			AssertMangling("?x@@3PEAW4ty@@EA", "enum ty *x");
+		}
+		[Test]
+		public void Basic23() {
+			AssertMangling("?x@@3PEAV?$tmpl@H@@EA", "class tmpl<int> *x");
+		}
+		[Test]
+		public void Basic24() {
+			AssertMangling("?x@@3PEAU?$tmpl@H@@EA", "struct tmpl<int> *x");
+		}
+		[Test]
+		public void Basic25() {
+			AssertMangling("?x@@3PEAT?$tmpl@H@@EA", "union tmpl<int> *x");
+		}
+		[Test]
+		public void Basic26() {
+			AssertMangling("?instance@@3Vklass@@A", "class klass instance");
+		}
+		[Test]
+		public void Basic27() {
+			AssertMangling("?instance$initializer$@@3P6AXXZEA", "void (__cdecl *instance$initializer$)(void)");
+		}
+		[Test]
+		public void Basic28() {
+			AssertMangling("??0klass@@QEAA@XZ", "public: __cdecl klass::klass(void)");
+		}
+		[Test]
+		public void Basic29() {
+			AssertMangling("??1klass@@QEAA@XZ", "public: __cdecl klass::~klass(void)");
+		}
+		[Test]
+		public void Basic30() {
+			AssertMangling("?x@@YAHPEAVklass@@AEAV1@@Z", "int __cdecl x(class klass *, class klass &)");
+		}
+		[Test]
+		public void Basic31() {
+			AssertMangling("?x@ns@@3PEAV?$klass@HH@1@EA", "class ns::klass<int, int> *ns::x");
+		}
+		[Test]
+		public void Basic32() {
+			AssertMangling("?fn@?$klass@H@ns@@QEBAIXZ", "public: unsigned int __cdecl ns::klass<int>::fn(void) const");
+		}
+		[Test]
+		public void Basic33() {
+			AssertMangling("??4klass@@QEAAAEBV0@AEBV0@@Z", "public: class klass const & __cdecl klass::operator=(class klass const &)");
+		}
+		[Test]
+		public void Basic34() {
+			AssertMangling("??7klass@@QEAA_NXZ", "public: bool __cdecl klass::operator!(void)");
+		}
+		[Test]
+		public void Basic35() {
+			AssertMangling("??8klass@@QEAA_NAEBV0@@Z", "public: bool __cdecl klass::operator==(class klass const &)");
+		}
+		[Test]
+		public void Basic36() {
+			AssertMangling("??9klass@@QEAA_NAEBV0@@Z", "public: bool __cdecl klass::operator!=(class klass const &)");
+		}
+		[Test]
+		public void Basic37() {
+			AssertMangling("??Aklass@@QEAAH_K@Z", "public: int __cdecl klass::operator[](unsigned __int64)");
+		}
+		[Test]
+		public void Basic38() {
+			AssertMangling("??Cklass@@QEAAHXZ", "public: int __cdecl klass::operator->(void)");
+		}
+		[Test]
+		public void Basic39() {
+			AssertMangling("??Dklass@@QEAAHXZ", "public: int __cdecl klass::operator*(void)");
+		}
+		[Test]
+		public void Basic40() {
+			AssertMangling("??Eklass@@QEAAHXZ", "public: int __cdecl klass::operator++(void)");
+		}
+		[Test]
+		public void Basic41() {
+			AssertMangling("??Eklass@@QEAAHH@Z", "public: int __cdecl klass::operator++(int)");
+		}
+		[Test]
+		public void Basic42() {
+			AssertMangling("??Fklass@@QEAAHXZ", "public: int __cdecl klass::operator--(void)");
+		}
+		[Test]
+		public void Basic43() {
+			AssertMangling("??Fklass@@QEAAHH@Z", "public: int __cdecl klass::operator--(int)");
+		}
+		[Test]
+		public void Basic44() {
+			AssertMangling("??Hklass@@QEAAHH@Z", "public: int __cdecl klass::operator+(int)");
+		}
+		[Test]
+		public void Basic45() {
+			AssertMangling("??Gklass@@QEAAHH@Z", "public: int __cdecl klass::operator-(int)");
+		}
+		[Test]
+		public void Basic46() {
+			AssertMangling("??Iklass@@QEAAHH@Z", "public: int __cdecl klass::operator&(int)");
+		}
+		[Test]
+		public void Basic47() {
+			AssertMangling("??Jklass@@QEAAHH@Z", "public: int __cdecl klass::operator->*(int)");
+		}
+		[Test]
+		public void Basic48() {
+			AssertMangling("??Kklass@@QEAAHH@Z", "public: int __cdecl klass::operator/(int)");
+		}
+		[Test]
+		public void Basic49() {
+			AssertMangling("??Mklass@@QEAAHH@Z", "public: int __cdecl klass::operator<(int)");
+		}
+		[Test]
+		public void Basic50() {
+			AssertMangling("??Nklass@@QEAAHH@Z", "public: int __cdecl klass::operator<=(int)");
+		}
+		[Test]
+		public void Basic51() {
+			AssertMangling("??Oklass@@QEAAHH@Z", "public: int __cdecl klass::operator>(int)");
+		}
+		[Test]
+		public void Basic52() {
+			AssertMangling("??Pklass@@QEAAHH@Z", "public: int __cdecl klass::operator>=(int)");
+		}
+		[Test]
+		public void Basic53() {
+			AssertMangling("??Qklass@@QEAAHH@Z", "public: int __cdecl klass::operator,(int)");
+		}
+		[Test]
+		public void Basic54() {
+			AssertMangling("??Rklass@@QEAAHH@Z", "public: int __cdecl klass::operator()(int)");
+		}
+		[Test]
+		public void Basic55() {
+			AssertMangling("??Sklass@@QEAAHXZ", "public: int __cdecl klass::operator~(void)");
+		}
+		[Test]
+		public void Basic56() {
+			AssertMangling("??Tklass@@QEAAHH@Z", "public: int __cdecl klass::operator^(int)");
+		}
+		[Test]
+		public void Basic57() {
+			AssertMangling("??Uklass@@QEAAHH@Z", "public: int __cdecl klass::operator|(int)");
+		}
+		[Test]
+		public void Basic58() {
+			AssertMangling("??Vklass@@QEAAHH@Z", "public: int __cdecl klass::operator&&(int)");
+		}
+		[Test]
+		public void Basic59() {
+			AssertMangling("??Wklass@@QEAAHH@Z", "public: int __cdecl klass::operator||(int)");
+		}
+		[Test]
+		public void Basic60() {
+			AssertMangling("??Xklass@@QEAAHH@Z", "public: int __cdecl klass::operator*=(int)");
+		}
+		[Test]
+		public void Basic61() {
+			AssertMangling("??Yklass@@QEAAHH@Z", "public: int __cdecl klass::operator+=(int)");
+		}
+		[Test]
+		public void Basic62() {
+			AssertMangling("??Zklass@@QEAAHH@Z", "public: int __cdecl klass::operator-=(int)");
+		}
+		[Test]
+		public void Basic63() {
+			AssertMangling("??_0klass@@QEAAHH@Z", "public: int __cdecl klass::operator/=(int)");
+		}
+		[Test]
+		public void Basic64() {
+			AssertMangling("??_1klass@@QEAAHH@Z", "public: int __cdecl klass::operator%=(int)");
+		}
+		[Test]
+		public void Basic65() {
+			AssertMangling("??_2klass@@QEAAHH@Z", "public: int __cdecl klass::operator>>=(int)");
+		}
+		[Test]
+		public void Basic66() {
+			AssertMangling("??_3klass@@QEAAHH@Z", "public: int __cdecl klass::operator<<=(int)");
+		}
+		[Test]
+		public void Basic67() {
+			AssertMangling("??_6klass@@QEAAHH@Z", "public: int __cdecl klass::operator^=(int)");
+		}
+		[Test]
+		public void Basic68() {
+			AssertMangling("??6@YAAEBVklass@@AEBV0@H@Z", "class klass const & __cdecl operator<<(class klass const &, int)");
+		}
+		[Test]
+		public void Basic69() {
+			AssertMangling("??5@YAAEBVklass@@AEBV0@_K@Z", "class klass const & __cdecl operator>>(class klass const &, unsigned __int64)");
+		}
+		[Test]
+		public void Basic70() {
+			AssertMangling("??2@YAPEAX_KAEAVklass@@@Z", "void * __cdecl operator new(unsigned __int64, class klass &)");
+		}
+		[Test]
+		public void Basic71() {
+			AssertMangling("??_U@YAPEAX_KAEAVklass@@@Z", "void * __cdecl operator new[](unsigned __int64, class klass &)");
+		}
+		[Test]
+		public void Basic72() {
+			AssertMangling("??3@YAXPEAXAEAVklass@@@Z", "void __cdecl operator delete(void *, class klass &)");
+		}
+		[Test]
+		public void Basic73() {
+			AssertMangling("??_V@YAXPEAXAEAVklass@@@Z", "void __cdecl operator delete[](void *, class klass &)");
+		}
+		#endregion
 	}
 }

@@ -2,58 +2,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SharpDemangler.Common
 {
-	public class StringView : IEnumerable<char>
+	public struct StringView : IEnumerable<char>
 	{
-		private StringBuilder str;
+		private string str;
 
-		public StringView() { }
 		public StringView(string str) {
-			this.str = new StringBuilder(str);
+			this.str = str;
 		}
 
 		public bool IsEmpty => str.Length < 1;
 
 		public StringView(char[] values) {
-			this.str = new StringBuilder(new string(values));
+			this.str = new string(values);
 		}
 		public StringView(char c, int count) {
-			this.str = new StringBuilder(new string(c, count));
+			this.str = new string(c, count);
 		}
 		public StringView(char[] value, int startIndex, int length) {
-			this.str = new StringBuilder(new string(value, startIndex, length));
+			this.str = new string(value, startIndex, length);
 		}
-#if UNSAFE
-		public StringView(sbyte* value) {
-			this.str = new StringBuilder(new string(value));
-		}
-		public StringView(char* value) {
-			this.str = new StringBuilder(new string(value));
-		}
-		public StringView(sbyte* value, int startIndex, int length){
-			this.str = new StringBuilder(new string(value, startIndex, length));
-		}
-		public StringView(char* value, int startIndex, int length){
-			this.str = new StringBuilder(new string(value, startIndex, length));
-		}
-		public StringView(sbyte* value, int startIndex, int length, Encoding encoding){
-			this.str = new StringBuilder(new string(value, startIndex, length, encoding));
-		}
-#endif
 
 		public static string Empty => string.Empty;
 
 		public static implicit operator string(StringView view) => view.ToString();
-		public static implicit operator StringBuilder(StringView view) => view;
 		public static implicit operator StringView(string str) => new StringView(str);
 
 		public char this[int index] {
 			get => str[index];
-			set => str[index] = value;
 		}
 
 		public int Length => str.Length;
