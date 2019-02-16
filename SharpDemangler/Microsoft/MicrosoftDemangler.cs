@@ -1013,7 +1013,7 @@ namespace SharpDemangler.Microsoft
 			string resultBuffer;
 
 			EncodedStringLiteralNode result = new EncodedStringLiteralNode();
-			if (mangledName.ConsumeFront("@_"))
+			if (!mangledName.ConsumeFront("@_"))
 				goto stringLiteralError;
 			if (mangledName.IsEmpty)
 				goto stringLiteralError;
