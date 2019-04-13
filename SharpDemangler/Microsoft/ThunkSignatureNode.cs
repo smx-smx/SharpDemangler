@@ -4,7 +4,7 @@ namespace SharpDemangler.Microsoft
 {
 	public struct ThisAdjustor
 	{
-		public uint StaticOffset ;
+		public uint StaticOffset;
 		public int VBPtrOffset;
 		public int VBOffsetOffset;
 		public int VtordispOffset;

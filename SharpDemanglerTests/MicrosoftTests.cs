@@ -1143,7 +1143,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Cxx11_20() {
-			AssertMangling("??R<lambda_1>@?0??define_lambda@@YAHXZ@QBE@XZ", "__thiscall `int __cdecl define_lambda(void)'::`1'::<lambda_1>::operator()(void) const");
+			AssertMangling("??R<lambda_1>@?0??define_lambda@@YAHXZ@QBE@XZ", "public: __thiscall `int __cdecl define_lambda(void)'::`1'::<lambda_1>::operator()(void) const");
 		}
 		[Test]
 		public void Cxx11_21() {
@@ -1286,7 +1286,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Cxx14_8() {
-			AssertMangling("??R<lambda_1>@?0???$TemplateFuncionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?1@XZ", "<auto> __thiscall `<auto> __cdecl TemplateFuncionWithLocalLambda<int>(int)'::`1'::<lambda_1>::operator()(void) const");
+			AssertMangling("??R<lambda_1>@?0???$TemplateFuncionWithLocalLambda@H@@YA?A?<auto>@@H@Z@QBE?A?1@XZ", "public: <auto> __thiscall `<auto> __cdecl TemplateFuncionWithLocalLambda<int>(int)'::`1'::<lambda_1>::operator()(void) const");
 		}
 		[Test]
 		public void Cxx14_9() {
@@ -1329,7 +1329,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle7() {
-			AssertMangling("?d@foo@@0FB", "static short const foo::d");
+			AssertMangling("?d@foo@@0FB", "private: static short const foo::d");
 		}
 		[Test]
 		public void Mangle8() {
@@ -1393,7 +1393,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle23() {
-			AssertMangling("?static_method@foo@@SAPAV1@XZ", "static class foo * __cdecl foo::static_method(void)");
+			AssertMangling("?static_method@foo@@SAPAV1@XZ", "public: static class foo * __cdecl foo::static_method(void)");
 		}
 		[Test]
 		public void Mangle24() {
@@ -1677,7 +1677,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Mangle94() {
-			AssertMangling("??HOverloadedNewDelete@@QAEHH@Z", "int __thiscall OverloadedNewDelete::operator+(int)");
+			AssertMangling("??HOverloadedNewDelete@@QAEHH@Z", "public: int __thiscall OverloadedNewDelete::operator+(int)");
 		}
 		[Test]
 		public void Mangle95() {
@@ -2271,19 +2271,19 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void ReturnQualifiers40() {
-			AssertMangling("?e1@@YA?AW4Enum@@XZ", "Enum __cdecl e1(void)");
+			AssertMangling("?e1@@YA?AW4Enum@@XZ", "enum Enum __cdecl e1(void)");
 		}
 		[Test]
 		public void ReturnQualifiers41() {
-			AssertMangling("?e2@@YA?BW4Enum@@XZ", "Enum const __cdecl e2(void)");
+			AssertMangling("?e2@@YA?BW4Enum@@XZ", "enum Enum const __cdecl e2(void)");
 		}
 		[Test]
 		public void ReturnQualifiers42() {
-			AssertMangling("?e3@@YAPAW4Enum@@XZ", "Enum * __cdecl e3(void)");
+			AssertMangling("?e3@@YAPAW4Enum@@XZ", "enum Enum * __cdecl e3(void)");
 		}
 		[Test]
 		public void ReturnQualifiers43() {
-			AssertMangling("?e4@@YAAAW4Enum@@XZ", "Enum & __cdecl e4(void)");
+			AssertMangling("?e4@@YAAAW4Enum@@XZ", "enum Enum & __cdecl e4(void)");
 		}
 		[Test]
 		public void ReturnQualifiers44() {
@@ -2351,6 +2351,13 @@ namespace SharpDemanglerTests
 		}
 		#endregion
 
+		#region StringLiterals
+		[Test]
+		public void StringLiteral1() {
+			AssertMangling("??_C@_0CF@LABBIIMO@012345678901234567890123456789AB@", "\"012345678901234567890123456789AB\"...");
+		}
+		#endregion
+
 		#region TemplateCallbacks
 		[Test]
 		public void TemplateCallback1() {
@@ -2362,23 +2369,23 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void TemplateCallback3() {
-			AssertMangling("?callback_int@@3V?$C@$$A6AHXZ@@A", "C<int __cdecl(void)> callback_int");
+			AssertMangling("?callback_int@@3V?$C@$$A6AHXZ@@A", "class C<int __cdecl(void)> callback_int");
 		}
 		[Test]
 		public void TemplateCallback4() {
-			AssertMangling("?callback_Type@@3V?$C@$$A6A?AVType@@XZ@@A", "C<class Type __cdecl(void)> callback_Type");
+			AssertMangling("?callback_Type@@3V?$C@$$A6A?AVType@@XZ@@A", "class C<class Type __cdecl(void)> callback_Type");
 		}
 		[Test]
 		public void TemplateCallback5() {
-			AssertMangling("?callback_void_int@@3V?$C@$$A6AXH@Z@@A", "C<void __cdecl(int)> callback_void_int");
+			AssertMangling("?callback_void_int@@3V?$C@$$A6AXH@Z@@A", "class C<void __cdecl(int)> callback_void_int");
 		}
 		[Test]
 		public void TemplateCallback6() {
-			AssertMangling("?callback_int_int@@3V?$C@$$A6AHH@Z@@A", "C<int __cdecl(int)> callback_int_int");
+			AssertMangling("?callback_int_int@@3V?$C@$$A6AHH@Z@@A", "class C<int __cdecl(int)> callback_int_int");
 		}
 		[Test]
 		public void TemplateCallback7() {
-			AssertMangling("?callback_void_Type@@3V?$C@$$A6AXVType@@@Z@@A", "C<void __cdecl(class Type)> callback_void_Type");
+			AssertMangling("?callback_void_Type@@3V?$C@$$A6AXVType@@@Z@@A", "class C<void __cdecl(class Type)> callback_void_Type");
 		}
 		[Test]
 		public void TemplateCallback8() {
@@ -2422,31 +2429,31 @@ namespace SharpDemanglerTests
 		#region Templates
 		[Test]
 		public void Template1() {
-			AssertMangling("??0?$Class@VTypename@@@@QAE@XZ", "__thiscall Class<class Typename>::Class<class Typename>(void)");
+			AssertMangling("??0?$Class@VTypename@@@@QAE@XZ", "public: __thiscall Class<class Typename>::Class<class Typename>(void)");
 		}
 		[Test]
 		public void Template2() {
-			AssertMangling("??0?$Class@VTypename@@@@QEAA@XZ", "__cdecl Class<class Typename>::Class<class Typename>(void)");
+			AssertMangling("??0?$Class@VTypename@@@@QEAA@XZ", "public: __cdecl Class<class Typename>::Class<class Typename>(void)");
 		}
 		[Test]
 		public void Template3() {
-			AssertMangling("??0?$Class@$$CBVTypename@@@@QAE@XZ", "__thiscall Class<class Typename const>::Class<class Typename const>(void)");
+			AssertMangling("??0?$Class@$$CBVTypename@@@@QAE@XZ", "public: __thiscall Class<class Typename const>::Class<class Typename const>(void)");
 		}
 		[Test]
 		public void Template4() {
-			AssertMangling("??0?$Class@$$CBVTypename@@@@QEAA@XZ", "__cdecl Class<class Typename const>::Class<class Typename const>(void)");
+			AssertMangling("??0?$Class@$$CBVTypename@@@@QEAA@XZ", "public: __cdecl Class<class Typename const>::Class<class Typename const>(void)");
 		}
 		[Test]
 		public void Template5() {
-			AssertMangling("??0?$Class@$$CCVTypename@@@@QAE@XZ", "__thiscall Class<class Typename volatile>::Class<class Typename volatile>(void)");
+			AssertMangling("??0?$Class@$$CCVTypename@@@@QAE@XZ", "public: __thiscall Class<class Typename volatile>::Class<class Typename volatile>(void)");
 		}
 		[Test]
 		public void Template6() {
-			AssertMangling("??0?$Class@$$CCVTypename@@@@QEAA@XZ", "__cdecl Class<class Typename volatile>::Class<class Typename volatile>(void)");
+			AssertMangling("??0?$Class@$$CCVTypename@@@@QEAA@XZ", "public: __cdecl Class<class Typename volatile>::Class<class Typename volatile>(void)");
 		}
 		[Test]
 		public void Template7() {
-			AssertMangling("??0?$Class@$$CDVTypename@@@@QAE@XZ", "__thiscall Class<class Typename const volatile>::Class<class Typename const volatile>(void)");
+			AssertMangling("??0?$Class@$$CDVTypename@@@@QAE@XZ", "public: __thiscall Class<class Typename const volatile>::Class<class Typename const volatile>(void)");
 		}
 		[Test]
 		public void Template8() {
@@ -2666,19 +2673,19 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Template62() {
-			AssertMangling("??$variadic_fn_template@HHHH@@YAXABH000@Z", "void __cdecl variadic_fn_template<int, int, int,   int>(int const &, int const &, int const &, int const &)");
+			AssertMangling("??$variadic_fn_template@HHHH@@YAXABH000@Z", "void __cdecl variadic_fn_template<int, int, int, int>(int const &, int const &, int const &, int const &)");
 		}
 		[Test]
 		public void Template63() {
-			AssertMangling("??$variadic_fn_template@HHD$$BY01D@@YAXABH0ABDAAY01$$CBD@Z", "void __cdecl variadic_fn_template<int, int, char, char[2]>(int const &, int const &, char const &, char const (&)[2]");
+			AssertMangling("??$variadic_fn_template@HHD$$BY01D@@YAXABH0ABDAAY01$$CBD@Z", "void __cdecl variadic_fn_template<int, int, char, char[2]>(int const &, int const &, char const &, char const (&)[2])");
 		}
 		[Test]
 		public void Template64() {
-			AssertMangling("??0?$VariadicClass@HD_N@@QAE@XZ", "__thiscall VariadicClass<int, char, bool>::VariadicClass<int, char, bool>(void)");
+			AssertMangling("??0?$VariadicClass@HD_N@@QAE@XZ", "public: __thiscall VariadicClass<int, char, bool>::VariadicClass<int, char, bool>(void)");
 		}
 		[Test]
 		public void Template65() {
-			AssertMangling("??0?$VariadicClass@_NDH@@QAE@XZ", "__thiscall VariadicClass<bool, char, int>::VariadicClass<bool, char, int>(void)");
+			AssertMangling("??0?$VariadicClass@_NDH@@QAE@XZ", "public: __thiscall VariadicClass<bool, char, int>::VariadicClass<bool, char, int>(void)");
 		}
 		[Test]
 		public void Template66() {
@@ -2710,7 +2717,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Template73() {
-			AssertMangling("?bar@?$UUIDType4@$1?_GUID_12345678_1234_1234_1234_1234567890ab@@3U__s_GUID@@B@@QAEXXZ", "void __thiscall UUIDType4<&struct __s_GUID const _GUID_12345678_1234_1234_1234_1234567890ab>::bar(void)");
+			AssertMangling("?bar@?$UUIDType4@$1?_GUID_12345678_1234_1234_1234_1234567890ab@@3U__s_GUID@@B@@QAEXXZ", "public: void __thiscall UUIDType4<&struct __s_GUID const _GUID_12345678_1234_1234_1234_1234567890ab>::bar(void)");
 		}
 		[Test]
 		public void Template74() {
@@ -2718,7 +2725,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void Template75() {
-			AssertMangling("??$?0N@?$Foo@H@@QEAA@N@Z", "__cdecl Foo<int>::Foo<int><double>(double)");
+			AssertMangling("??$?0N@?$Foo@H@@QEAA@N@Z", "public: __cdecl Foo<int>::Foo<int><double>(double)");
 		}
 		#endregion
 		
@@ -2884,7 +2891,7 @@ namespace SharpDemanglerTests
 		}
 		[Test]
 		public void TemplateMemptr_2_9() {
-			AssertMangling("??0?$ClassTemplate@$J??_9MostGeneral@@$BA@AEA@M@3@@QAE@XZ", "__thiscall ClassTemplate<{[thunk]: __thiscall MostGeneral::`vcall\'{0, {flat}}, 0, 12, 4}>::ClassTemplate<{[thunk]: __thiscall MostGeneral::`vcall\'{0, {flat}}, 0, 12, 4}>(void)");
+			AssertMangling("??0?$ClassTemplate@$J??_9MostGeneral@@$BA@AEA@M@3@@QAE@XZ", "public: __thiscall ClassTemplate<{[thunk]: __thiscall MostGeneral::`vcall\'{0, {flat}}, 0, 12, 4}>::ClassTemplate<{[thunk]: __thiscall MostGeneral::`vcall\'{0, {flat}}, 0, 12, 4}>(void)");
 		}
 		#endregion
 

@@ -46,6 +46,7 @@ namespace SharpDemangler
 		}
 
 		static void Main(string[] args) {
+			MainItanium(args);
 			MainMicrosoft(args);
 		}
 	}

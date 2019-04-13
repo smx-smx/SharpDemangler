@@ -681,6 +681,7 @@ namespace SharpDemangler.Microsoft
 				ttn.Quals = fsn.Quals;
 				ttn.RefQualifier = fsn.RefQualifier;
 				ttn.ReturnType = fsn.ReturnType;
+				fsn = ttn;
 			}
 
 			fsn.FunctionClass = fc;
@@ -787,7 +788,7 @@ namespace SharpDemangler.Microsoft
 				return null;
 			}
 
-			if (mangledName.IsEmpty) {
+			if (!mangledName.IsEmpty) {
 				lsgi.ScopeIndex = (uint)DemangleUnsigned(ref mangledName);
 			}
 			return lsgvn;
